@@ -41,7 +41,12 @@ static int cmd_si(char *args)
 	int n=0;
 	if(arg==NULL) n=1;
 	else sscanf(arg,"%d",&n);
-	cpu_exec(9);
+	cpu_exec(10);
+	return 0;
+}
+static int cmd_info(char *args) {
+	char *arg = strtok(NULL, " ");
+	if(*arg=='r') printf("eax : %d",cpu.gpr[0]._32);
 	return 0;
 }
 
@@ -55,7 +60,8 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
-	{"si","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si}
+	{"si","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si},
+	{"info","print the state of register ",cmd_info}
 	/* TODO: Add more commands */
 
 };
