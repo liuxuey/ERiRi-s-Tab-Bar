@@ -74,8 +74,22 @@ static int cmd_info(char *args) {
 	 
 	}
 	return 0;
-}
+} 
 
+static int cmd_exam(char *args)
+	{
+	int n;
+	int i;
+	int add;
+	sscanf(args,"%d,%x",&n,&add);
+	printf("address: ");
+	for(i=0;i<n;i++)
+	{
+	printf("0x%x",add);
+	add++;
+	}
+	return 0;
+	}
 static int cmd_help(char *args);
 
 static struct {
@@ -87,7 +101,8 @@ static struct {
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
 	{"si","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si},
-	{"info","print the state of register ",cmd_info}
+	{"info","print the state of register ",cmd_info},
+	{"x","扫描内存",cmd_exam}
 	/* TODO: Add more commands */
 
 };
