@@ -46,7 +46,33 @@ static int cmd_si(char *args)
 }
 static int cmd_info(char *args) {
 	char *arg = strtok(NULL, " ");
-	if(*arg=='r') printf("eax : %d",cpu.gpr[0]._32);
+	if(*arg=='r') 
+	{printf("eax : %d \n",cpu.gpr[0]._32);
+	 printf("ecx : %d \n",cpu.gpr[1]._32);
+	 printf("edx : %d \n",cpu.gpr[2]._32);
+	 printf("ebx : %d \n",cpu.gpr[3]._32);
+	 printf("esp : %d \n",cpu.gpr[4]._32);
+	 printf("ebp : %d \n",cpu.gpr[5]._32);
+	 printf("esi : %d \n",cpu.gpr[6]._32);
+	 printf("edi : %d \n",cpu.gpr[7]._32);
+	 printf("ax : %d \n",cpu.gpr[0]._16);
+	 printf("cx : %d \n",cpu.gpr[1]._16);
+	 printf("dx : %d \n",cpu.gpr[2]._16);
+	 printf("bx : %d \n",cpu.gpr[3]._16);
+	 printf("sp : %d \n",cpu.gpr[4]._16);
+	 printf("bp : %d \n",cpu.gpr[5]._16);
+	 printf("si : %d \n",cpu.gpr[6]._16);
+	 printf("di : %d \n",cpu.gpr[7]._16);
+	 printf("al : %d \n",cpu.gpr[0]._8[0]);
+	 printf("ah : %d \n",cpu.gpr[0]._8[1]);
+	 printf("cl : %d \n",cpu.gpr[0]._8[0]);
+	 printf("ch : %d \n",cpu.gpr[0]._8[1]);
+	 printf("dl : %d \n",cpu.gpr[0]._8[0]);
+	 printf("dh : %d \n",cpu.gpr[0]._8[1]);
+	 printf("bl : %d \n",cpu.gpr[0]._8[0]);
+	 printf("bh : %d \n",cpu.gpr[0]._8[1]);
+	 
+	}
 	return 0;
 }
 
