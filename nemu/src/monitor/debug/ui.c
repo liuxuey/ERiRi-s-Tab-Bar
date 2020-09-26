@@ -2,7 +2,7 @@
 #include "monitor/expr.h"
 #include "monitor/watchpoint.h"
 #include "nemu.h"
-
+#include <stdio.h>
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -39,9 +39,8 @@ static int cmd_si(char *args)
 {
 	char *arg = strtok(NULL, " ");
 	int n=0;
-	int t;
 	if(arg==NULL) n=1;
-	else t=scanf(arg,"%d",&n);
+	n=atoi(arg);
 	cpu_exec(n);
 	return 0;
 }
