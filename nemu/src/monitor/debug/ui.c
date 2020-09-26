@@ -37,10 +37,12 @@ static int cmd_q(char *args) {
 }
 static int cmd_si(char *args)
 {
+	char *arg = strtok(NULL, " ");
 	int n=0;
 	int t;
-	if(args==NULL) n=1;
-	else t=scanf(args,"%d",&n);
+	if(arg==NULL) n=1;
+	else t=scanf(arg,"%d",&n);
+	
 	cpu_exec(n);
 	return 0;
 }
