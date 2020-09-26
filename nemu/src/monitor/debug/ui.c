@@ -37,10 +37,11 @@ static int cmd_q(char *args) {
 }
 static int cmd_si(char *args)
 {
-	char const *arg = "9";
+	char const *arg = "10";
 	int n=0;
 	if(arg==NULL) n=1;
 	else sscanf(arg,"%d",&n);
+	n--;
 	cpu_exec(n);
 	return 0;
 }
