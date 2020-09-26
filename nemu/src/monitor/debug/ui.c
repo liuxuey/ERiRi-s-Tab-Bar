@@ -37,7 +37,12 @@ static int cmd_q(char *args) {
 }
 static int cmd_si(char *args)
 {
-	return -1;
+	int n=0;
+	int t;
+	if(args==NULL) n=1;
+	else t=scanf(args,"%d",&n);
+	cpu_exec(n);
+	return 0;
 }
 
 static int cmd_help(char *args);
@@ -50,7 +55,7 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
-	{"si [N]","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si}
+	{"si n","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si}
 	/* TODO: Add more commands */
 
 };
