@@ -40,7 +40,7 @@ static int cmd_si(char *args)
 	char *arg = strtok(NULL, " ");
 	int n=0;
 	if(arg==NULL) n=1;
-	else n=*arg;
+	else n=*arg-'0';
 	cpu_exec(n);
 	return 0;
 }
