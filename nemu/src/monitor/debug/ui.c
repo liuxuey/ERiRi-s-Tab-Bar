@@ -41,7 +41,7 @@ static int cmd_si(char *args)
 	int n=0;
 	if(arg==NULL) n=1;
 	else sscanf(arg,"%d",&n);
-	cpu_exec(10);
+	cpu_exec(n);
 	return 0;
 }
 static int cmd_info(char *args) {
