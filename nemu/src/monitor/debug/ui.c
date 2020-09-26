@@ -85,7 +85,7 @@ static int cmd_exam(char *args)
 	printf("address: ");
 	for(i=0;i<n;i++)
 	{
-	printf("0x%x",add);
+	printf("0x%x\n",add);
 	add++;
 	}
 	return 0;
