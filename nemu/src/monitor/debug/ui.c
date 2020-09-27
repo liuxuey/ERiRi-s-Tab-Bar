@@ -78,17 +78,21 @@ static int cmd_info(char *args) {
 
 static int cmd_exam(char *args)
 	{
-	int n;
 	int i;
-	int add;
-	sscanf(args,"%d,%x",&n,&add);
-	printf("%d",n);
-	printf("%x",add);
-	add=0x10000;
+	int j;
+	char *arg=strtok(args," ");
+	int n=atoi(arg);
+	char *add =strtok(NULL," ");
+	char *str;
+	hwaddr_t addr =strtol(add,&str,16);
 	for(i=0;i<n;i++)
 	{
-	printf("0x%x\taddress:0x%x\n",lnaddr_read(add,4),add);
-	add+=4;
+	uint32_t data =hwaddr_read(addr+i*4,4);
+	printf("0x%08x ",addr+i*4);
+	for(j=0;j<4;j++){
+	printf("0x%02x ",data&0xff);
+	data =data >>8;}
+	printf("\n");
 	}
 	return 0;
 	}
