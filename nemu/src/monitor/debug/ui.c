@@ -82,9 +82,10 @@ static int cmd_exam(char *args)
 	int i;
 	int add;
 	sscanf(args,"%d,%x",&n,&add);
+	printf("%d",add);
 	for(i=0;i<n;i++)
 	{
-	printf("0x%x\taddress:0x%x\n",lnaddr_read(add,1),add);
+	printf("0x%x\taddress:0x%x\n",swaddr_read(add,1),add);
 	add++;
 	}
 	return 0;
