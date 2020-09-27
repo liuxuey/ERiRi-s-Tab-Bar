@@ -84,10 +84,10 @@ static int cmd_exam(char *args)
 	int n=atoi(arg);
 	char *add =strtok(NULL," ");
 	char *str;
-	hwaddr_t addr =strtol(add,&str,16);
+	swaddr_t addr =strtol(add,&str,16);
 	for(i=0;i<n;i++)
 	{
-	uint32_t data =hwaddr_read(addr+i*4,4);
+	uint32_t data =swaddr_read(addr+i*4,4);
 	printf("0x%08x ",addr+i*4);
 	for(j=0;j<4;j++){
 	printf("0x%02x ",data&0xff);
