@@ -80,17 +80,18 @@ static int cmd_exam(char *args)
 	{
 	int i;
 	int j;
+	int add;
 	char *arg=strtok(args," ");
 	int n=atoi(arg);
-	char *add =strtok(NULL," ");
-	char *str;
-	swaddr_t addr =strtol(add,&str,16);
+	char *arg1=strtok(NULL," ");
+	
+	sscanf(arg1, "%x" , &add);
 	for(i=0;i<n;i++)
 	{
-	uint32_t data =swaddr_read(addr+i*4,4);
-	printf("0x%08x ",addr+i*4);
+	int data =swaddr_read(add+i*4,4);
+	printf("0x%08x ",add+i*4);
 	for(j=0;j<4;j++){
-	printf("0x%02x ",data&0xff);
+	printf("0x%02x ",data);
 	data =data >>8;}
 	printf("\n");
 	}
