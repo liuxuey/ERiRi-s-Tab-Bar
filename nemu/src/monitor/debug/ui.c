@@ -82,6 +82,7 @@ static int cmd_exam(char *args)
 	int i;
 	int add;
 	sscanf(args,"%d,%x",&n,&add);
+	printf("%d",n);
 	printf("%x",add);
 	for(i=0;i<n;i++)
 	{
