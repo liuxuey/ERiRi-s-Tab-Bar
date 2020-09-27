@@ -84,7 +84,7 @@ static int cmd_exam(char *args)
 	sscanf(args,"%d",&n);
 	char *arg = strtok(NULL, " ");
 	sscanf(arg,"%x",&add);
-	printf("%d",add);
+	printf("%x",add);
 	for(i=0;i<n;i++)
 	{
 	printf("0x%x\taddress:0x%x\n",swaddr_read(add,4),add);
