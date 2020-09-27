@@ -83,15 +83,14 @@ static int cmd_exam(char *args)
 	int add;
 	char *arg=strtok(args," ");
 	int n=atoi(arg);
-	char *arg1=strtok(NULL," ");
-	
-	sscanf(arg1,"%x" , &add);
+	char *arg1 =strtok(NULL," ");
+	sscanf(arg1,"%x",&add);
 	for(i=0;i<n;i++)
 	{
 	uint32_t data =swaddr_read(add+i*4,4);
 	printf("0x%08x ",add+i*4);
 	for(j=0;j<4;j++){
-	printf("0x%02x ",data);
+	printf("0x%02x ",data&0xff);
 	data =data >>8;}
 	printf("\n");
 	}
