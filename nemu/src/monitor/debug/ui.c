@@ -81,9 +81,7 @@ static int cmd_exam(char *args)
 	int n;
 	int i;
 	int add;
-	sscanf(args,"%d",&n);
-	char *arg = strtok(NULL, " ");
-	sscanf(arg,"%x",&add);
+	sscanf(args,"%d,%x",&n,&add);
 	printf("%x",add);
 	for(i=0;i<n;i++)
 	{
