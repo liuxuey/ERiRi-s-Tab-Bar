@@ -21,9 +21,15 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
-
+	
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
+	{"\\-", '-'},					// minus
+	{"\\*", '*'},					// mutiply
+	{"\\/", '/'},					// divide
+	{"\\d+", 'n'},					// number
+	{"(",'('},					// zuokuohao
+	{")",')'},					// youkuohao
 	{"==", EQ}						// equal
 };
 
@@ -50,10 +56,10 @@ void init_regex() {
 
 typedef struct token {
 	int type;
-	char str[32];
+	char* str;
 } Token;
 
-Token tokens[32];
+Token *tokens;
 int nr_token;
 
 static bool make_token(char *e) {
@@ -79,6 +85,15 @@ static bool make_token(char *e) {
 				 */
 
 				switch(rules[i].token_type) {
+					case '+': {tokens[position].type='+'; break;}
+					case '-': {tokens[position].type='-'; break;}
+					case '*': {tokens[position].type='*'; break;}
+					case '/': {tokens[position].type='/'; break;}
+					case '(': {tokens[position].type='('; break;}
+					case ')': {tokens[position].type=')'; break;}
+					case EQ: {tokens[position].type=EQ; break;}
+					case 256: {tokens[position].type=256; break;}
+					case 'n': {tokens[position].type='n'; tokens[position].str=rules[i].regex; break;}
 					default: panic("please implement me");
 				}
 
