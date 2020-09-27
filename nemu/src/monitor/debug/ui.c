@@ -87,7 +87,7 @@ static int cmd_exam(char *args)
 	add=0x10000;
 	for(i=0;i<n;i++)
 	{
-	printf("0x%x\taddress:0x%x\n",swaddr_read(add,4),add);
+	printf("0x%x\taddress:0x%x\n",hwaddr_read(add,4),add);
 	add+=4;
 	}
 	return 0;
