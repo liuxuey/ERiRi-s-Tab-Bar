@@ -28,8 +28,8 @@ static struct rule {
 	{"\\*", '*'},					// mutiply
 	{"\\/", '/'},					// divide
 	{"\\d+", 'n'},					// number
-	{"(",'('},					// zuokuohao
-	{")",')'},					// youkuohao
+	{"\\(",'('},					// zuokuohao
+	{"\\)",')'},					// youkuohao
 	{"==", EQ}						// equal
 };
 
