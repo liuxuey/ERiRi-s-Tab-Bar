@@ -88,9 +88,9 @@ static int cmd_exam(char *args)
 	for(i=0;i<n;i++)
 	{
 	uint32_t data =swaddr_read(add+i*4,4);
-	printf("0x%08x ",add+i*4);
+	printf("0x%8x ",add+i*4);
 	for(j=0;j<4;j++){
-	printf("0x%02x ",data&0xff);
+	printf("0x%2x ",data&0xff);
 	data =data >>8;}
 	printf("\n");
 	}
