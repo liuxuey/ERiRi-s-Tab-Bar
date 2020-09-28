@@ -73,6 +73,7 @@ static bool make_token(char *e) {
 		/* Try all rules one by one. */
 		for(i = 0; i < NR_REGEX; i ++) {
 			if(regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
+				printf("here0\n");
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
 
@@ -87,6 +88,8 @@ static bool make_token(char *e) {
 				if (rules[i].token_type == NOTYPE)
 					continue;
 
+				printf("here1\n");
+
 				switch(rules[i].token_type) {
 					case '+': {tokens[nr_token].type='+'; nr_token++; tokens[nr_token].priority1=1; break;}   //case "+"
 					case '-': {tokens[nr_token].type='-'; nr_token++; tokens[nr_token].priority1=1; break;}	//case "-"
@@ -100,6 +103,7 @@ static bool make_token(char *e) {
 					default: panic("please implement me");
 				}
 
+				printf("here3\n");
 				break;
 			}
 		}
@@ -109,6 +113,7 @@ static bool make_token(char *e) {
 			return false;
 		}
 	}
+	printf("here4\n");
 	nr_token--;
 	return true; 
 }
