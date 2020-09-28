@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ , NUMBER
+	NOTYPE = 256, EQ , NUMBER = 'i'
 	/* TODO: Add more token types */
 
 };
@@ -103,10 +103,10 @@ static bool make_token(char *e) {
 					case ')': {tokens[nr_token].type=')'; nr_token++; tokens[nr_token].priority1=100;break;}
 					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}		//     等于
 					// case 256: {tokens[nr_token].type=256; nr_token++; tokens[nr_token].priority1=100000000;break;}	//case 空格
-					case 258: {printf("here4\n");
+					case 'i': {printf("here4\n");tokens[nr_token].type='i';
 					printf("here6\n");
 							   strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
-							   
+							   tokens[nr_token].str[substr_len] = '\0';
 							   printf("here5\n");
 							   tokens[nr_token].priority1=10000000;
 							    break;}
