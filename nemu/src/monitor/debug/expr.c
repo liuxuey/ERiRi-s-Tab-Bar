@@ -106,7 +106,7 @@ static bool make_token(char *e) {
 					case 258: {printf("here4\n");
 					printf("here6\n");
 							   strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
-							   tokens[nr_token].str[substr_len] = '\0';
+							   
 							   printf("here5\n");
 							   tokens[nr_token].priority1=10000000;
 							    break;}
