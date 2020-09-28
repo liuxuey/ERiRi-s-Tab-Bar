@@ -207,7 +207,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		int op;
 		
 		op=finddominantoprator(p,q);
-		printf("%d\n here 1",op);
+		printf("%d  here 1 \n",op);
 		uint32_t val1=sumbds(p,op-1);
 		uint32_t val2=sumbds(op+1,q);
 		switch (tokens[op].type)
