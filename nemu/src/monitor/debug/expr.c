@@ -110,7 +110,7 @@ static bool make_token(char *e) {
 	nr_token--;
 	return true; 
 }
-bool check_parentheses(int p,int q){		//找位置对不对括号的对应	
+bool check_parenthese(int p,int q){		//找位置对不对括号的对应	
 	int i;
 	
 	int left=0;//左括号的个数
@@ -131,13 +131,18 @@ bool check_parentheses(int p,int q){		//找位置对不对括号的对应
 	if(left!=right) return false; //左括号数！=右括号数
 	return true;
 }
-
+bool check_parentheses(int p,int q){//最后的括号对应
+	if(check_parenthese(p,q)) {
+		if(tokens[p].type=='('&& tokens[q].type==')')
+		return true;
+	}
+	return false;
+}
 	int finddominantoprator(int p,int q){		//找到拆分的运算符
 		 //tokens的长度
 		 //assert(check_parentheses(p,q),"表达式错误！");
 		int i;
 		int j=p;
-		if(tokens[p].type=='('&&tokens[q].type==')') return finddominantoprator(p+1,q-1); //开始和末尾是左右括号，那么递归
 		Token dominantop=tokens[p];	//从p位置开始找
 		for(i=p;i<=q;i++)
 		{
@@ -160,7 +165,40 @@ bool check_parentheses(int p,int q){		//找位置对不对括号的对应
 		}
 		return j;
 	}
-
+uint32_t sumbds(p,q)		//表达式求值
+{
+	if(p>q){
+		assert(0);
+	}
+	else if(p==q)
+	{
+		int n=0;
+		sscanf(tokens[p].str,"%d",&n);
+		return n;
+	}
+	else if (check_parentheses(p,q))
+	{
+		return sumbds(p+1,q-1);
+	}
+	else 
+	{
+		int op;
+		op=finddominantoprator(p,q);
+		uint32_t val1=sumbds(p,op-1);
+		uint32_t val2=sumbds(op+1,q);
+		switch (tokens[op].type)
+		{
+		case '+': return val1+val2;
+		case '-': return val1-val2;
+		case '*': return val1*val2;
+		case '/': return val1/val2;
+		
+		
+		default: assert(0);
+			
+		}
+	}
+}
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
 		*success = false;
@@ -168,6 +206,7 @@ uint32_t expr(char *e, bool *success) {
 	}
 
 	/* TODO: Insert codes to evaluate the expression. */
+	return sumbds(0,nr_token);
 	panic("please implement me");
 	return 0;
 }

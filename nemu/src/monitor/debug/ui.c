@@ -96,6 +96,13 @@ static int cmd_exam(char *args)
 	}
 	return 0;
 	}
+static int cmd_cmpter(char* args)
+{
+	bool i=1;
+	bool *sus=&i;
+	printf("%d",expr(args, sus));
+	return 0;
+}
 static int cmd_help(char *args);
 
 static struct {
@@ -108,7 +115,8 @@ static struct {
 	{ "q", "Exit NEMU", cmd_q },
 	{"si","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si},
 	{"info","print the state of register ",cmd_info},
-	{"x","扫描内存",cmd_exam}
+	{"x","扫描内存",cmd_exam},
+	{"p","表达式求值",cmd_cmpter}
 	/* TODO: Add more commands */
 
 };
