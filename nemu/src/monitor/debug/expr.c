@@ -94,20 +94,20 @@ static bool make_token(char *e) {
 				
 
 				switch(rules[i].token_type) {
-					case '+': {tokens[nr_token].type='+'; nr_token++; tokens[nr_token].priority1=1; break;}   //case "+"
-					case '-': {tokens[nr_token].type='-'; nr_token++; tokens[nr_token].priority1=1; break;}	//case "-"
-					case '*': {tokens[nr_token].type='*'; nr_token++; tokens[nr_token].priority1=2; break;}
-					case '/': {tokens[nr_token].type='/'; nr_token++; tokens[nr_token].priority1=2; break;}
-					case '(': {tokens[nr_token].type='('; nr_token++; tokens[nr_token].priority1=100; break;}
-					case ')': {tokens[nr_token].type=')'; nr_token++; tokens[nr_token].priority1=100;break;}
+					case '+': {tokens[nr_token].type='+'; tokens[nr_token].priority1=1; nr_token++;  break;}   //case "+"
+					case '-': {tokens[nr_token].type='-'; tokens[nr_token].priority1=1; nr_token++; break;}	//case "-"
+					case '*': {tokens[nr_token].type='*'; tokens[nr_token].priority1=12; nr_token++; break;}
+					case '/': {tokens[nr_token].type='/'; tokens[nr_token].priority1=12; nr_token++;  break;}
+					case '(': {tokens[nr_token].type='('; tokens[nr_token].priority1=222; nr_token++; break;}
+					case ')': {tokens[nr_token].type=')'; tokens[nr_token].priority1=222; nr_token++; break;}
 					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}
 					case 'i': {
 							    tokens[nr_token].type='i';
-							   
+							   tokens[nr_token].priority1=10000000;
 							   strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
 							   nr_token++;
 							   
-							   tokens[nr_token].priority1=10000000;
+							   
 							    break;}
 					default: panic("please implement me");
 				}
@@ -174,6 +174,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 			if(flag==0){
 			if(dominantop.priority1>=tokens[i].priority1)	//比较优先级
 			{
+				printf("%d\n",tokens[i].priority1);
 				dominantop=tokens[i];
 				j=i;						//do op的定位
 			}}
