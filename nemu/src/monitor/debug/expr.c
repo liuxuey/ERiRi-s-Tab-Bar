@@ -105,7 +105,8 @@ static bool make_token(char *e) {
 							    tokens[nr_token].type='i';
 							   nr_token++;
 							   strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
-							   tokens[nr_token].str[substr_len] = '\0';
+							   printf("%s\n",tokens[nr_token].str);
+							   
 							   
 							   tokens[nr_token].priority1=10000000;
 							    break;}
@@ -189,8 +190,6 @@ uint32_t sumbds(p,q)		//表达式求值
 	else if(p==q)
 	{
 		int n=0;
-		printf("%d" ,p);
-		printf("%s" ,tokens[p].str);
 		sscanf(tokens[p].str,"%d",&n);
 		
 		return n;
