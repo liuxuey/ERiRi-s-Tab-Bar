@@ -174,7 +174,6 @@ bool check_parentheses(int p,int q){//最后的括号对应
 			if(flag==0){
 			if(dominantop.priority1>=tokens[i].priority1)	//比较优先级
 			{
-				printf("%d\n",tokens[i].priority1);
 				dominantop=tokens[i];
 				j=i;						//do op的定位
 			}}
