@@ -189,8 +189,9 @@ uint32_t sumbds(p,q)		//表达式求值
 	else if(p==q)
 	{
 		int n=0;
+		printf("%s" ,tokens[p].str);
 		sscanf(tokens[p].str,"%d",&n);
-		printf("%d\n", n);
+		
 		return n;
 	}
 	else if (check_parentheses(p,q))
