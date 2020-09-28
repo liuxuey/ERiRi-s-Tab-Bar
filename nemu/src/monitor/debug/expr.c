@@ -83,6 +83,9 @@ static bool make_token(char *e) {
 				 * to record the token in the array `tokens'. For certain types
 				 * of tokens, some extra actions should be performed.
 				 */
+				// 去除空格串
+				if (rules[i].token_type == NOTYPE)
+					continue;
 
 				switch(rules[i].token_type) {
 					case '+': {tokens[nr_token].type='+'; nr_token++; tokens[nr_token].priority1=1; break;}   //case "+"
@@ -92,7 +95,7 @@ static bool make_token(char *e) {
 					case '(': {tokens[nr_token].type='('; nr_token++; tokens[nr_token].priority1=100; break;}
 					case ')': {tokens[nr_token].type=')'; nr_token++; tokens[nr_token].priority1=100;break;}
 					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}		//     等于
-					case 256: {tokens[nr_token].type=256; nr_token++; tokens[nr_token].priority1=100000000;break;}	//case 空格
+					// case 256: {tokens[nr_token].type=256; nr_token++; tokens[nr_token].priority1=100000000;break;}	//case 空格
 					case 258: {tokens[nr_token].type=258; strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len); tokens[nr_token].priority1=10000000;break;}
 					default: panic("please implement me");
 				}
