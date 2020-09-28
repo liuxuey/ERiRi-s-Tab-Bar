@@ -55,8 +55,9 @@ void init_regex() {
 }
 
 typedef struct token {
-	int type;
-	char* str;
+	int type;	//token的类型
+	char* str;	//token里的数据
+	int priority1; //token的优先级
 } Token;
 
 Token *tokens;
@@ -67,7 +68,7 @@ static bool make_token(char *e) {
 	int i;
 	regmatch_t pmatch;
 	
-	nr_token = 0;
+	nr_token = 0; //tokens的个数
 
 	while(e[position] != '\0') {
 		/* Try all rules one by one. */
@@ -85,15 +86,15 @@ static bool make_token(char *e) {
 				 */
 
 				switch(rules[i].token_type) {
-					case '+': {tokens[position].type='+'; break;}
-					case '-': {tokens[position].type='-'; break;}
-					case '*': {tokens[position].type='*'; break;}
-					case '/': {tokens[position].type='/'; break;}
-					case '(': {tokens[position].type='('; break;}
-					case ')': {tokens[position].type=')'; break;}
-					case EQ: {tokens[position].type=EQ; break;}
-					case 256: {tokens[position].type=256; break;}
-					case 'n': {tokens[position].type='n'; tokens[position].str=rules[i].regex; break;}
+					case '+': {tokens[nr_token].type='+'; nr_token++; tokens[nr_token].priority1=1; break;}   //case "+"
+					case '-': {tokens[nr_token].type='-'; nr_token++; tokens[nr_token].priority1=1; break;}	//case "-"
+					case '*': {tokens[nr_token].type='*'; nr_token++; tokens[nr_token].priority1=2; break;}
+					case '/': {tokens[nr_token].type='/'; nr_token++; tokens[nr_token].priority1=2; break;}
+					case '(': {tokens[nr_token].type='('; nr_token++; tokens[nr_token].priority1=100; break;}
+					case ')': {tokens[nr_token].type=')'; nr_token++; tokens[nr_token].priority1=100;break;}
+					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}		//     等于
+					case 256: {tokens[nr_token].type=256; nr_token++; tokens[nr_token].priority1=100000000;break;}	//case 空格
+					case 'n': {tokens[nr_token].type='n'; strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len); tokens[nr_token].priority1=10000000;break;}
 					default: panic("please implement me");
 				}
 
@@ -106,9 +107,59 @@ static bool make_token(char *e) {
 			return false;
 		}
 	}
-
+	nr_token--;
 	return true; 
 }
+bool check_parentheses(int p,int q){		//找位置对不对括号的对应	
+	int i;
+	
+	int left=0;//左括号的个数
+	int right=0;//右括号的个数
+	for(i=p;i<=q;i++)
+	{
+		if(tokens[i].type=='('||tokens[i].type==')')
+		{
+			if(tokens[i].type=='(')
+			{
+				left++;
+
+			}
+			else right++;
+			if(right>left) return false;
+		}
+	}
+	if(left!=right) return false; //左括号数！=右括号数
+	return true;
+}
+
+	int finddominantoprator(int p,int q){		//找到拆分的运算符
+		 //tokens的长度
+		 //assert(check_parentheses(p,q),"表达式错误！");
+		int i;
+		int j=p;
+		if(tokens[p].type=='('&&tokens[q].type==')') return finddominantoprator(p+1,q-1); //开始和末尾是左右括号，那么递归
+		Token dominantop=tokens[p];	//从p位置开始找
+		for(i=p;i<=q;i++)
+		{
+			if(tokens[i].type=='(') 	//读入左括号
+			{
+				dominantop=tokens[i];
+				j=i;    				//将dominantop定位到左括号
+			}
+			else if(dominantop.type=='(')	//do op为左括号
+			{
+				if(tokens[i].type==')')		//读到右括号
+				{dominantop=tokens[i];
+				j=i;}						//将do op定位到右括号
+			}
+			else if(dominantop.priority1<=tokens[i].priority1)	//比较优先级
+			{
+				dominantop=tokens[i];
+				j=i;						//do op的定位
+			}
+		}
+		return j;
+	}
 
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
