@@ -204,6 +204,8 @@ uint32_t expr(char *e, bool *success) {
 		return 0;
 	}
 
+	printf("%s\n", e);
+
 	/* TODO: Insert codes to evaluate the expression. */
 	return sumbds(0,nr_token);
 	panic("please implement me");
