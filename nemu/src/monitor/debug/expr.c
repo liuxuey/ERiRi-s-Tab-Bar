@@ -59,7 +59,7 @@ typedef struct token {
 	int priority1; //token的优先级
 } Token;
 
-Token *tokens;
+Token tokens[32];
 int nr_token;
 
 static bool make_token(char *e) {
