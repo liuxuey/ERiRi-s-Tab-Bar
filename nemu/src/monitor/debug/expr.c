@@ -190,6 +190,7 @@ uint32_t sumbds(p,q)		//表达式求值
 	{
 		int n=0;
 		sscanf(tokens[p].str,"%d",&n);
+		printf("%d\n", n);
 		return n;
 	}
 	else if (check_parentheses(p,q))
