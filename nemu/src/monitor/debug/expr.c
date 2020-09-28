@@ -74,7 +74,7 @@ static bool make_token(char *e) {
 		for(i = 0; i < NR_REGEX; i ++) {
 			if(regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
 				
-				printf("here0\n");
+				
 				
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
@@ -91,7 +91,7 @@ static bool make_token(char *e) {
 				if (rules[i].token_type == NOTYPE)
 					continue;
 
-				printf("here1\n");
+				
 
 				switch(rules[i].token_type) {
 					case '+': {tokens[nr_token].type='+'; nr_token++; tokens[nr_token].priority1=1; break;}   //case "+"
@@ -101,18 +101,18 @@ static bool make_token(char *e) {
 					case '(': {tokens[nr_token].type='('; nr_token++; tokens[nr_token].priority1=100; break;}
 					case ')': {tokens[nr_token].type=')'; nr_token++; tokens[nr_token].priority1=100;break;}
 					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}
-					case 'i': {printf("here4\n");
+					case 'i': {
 							   printf("%d\n", nr_token); tokens[nr_token].type='i';
-							   printf("here6\n");
+							   
 							   strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
 							   tokens[nr_token].str[substr_len] = '\0';
-							   printf("here5\n");
+							   
 							   tokens[nr_token].priority1=10000000;
 							    break;}
 					default: panic("please implement me");
 				}
 
-				printf("here3\n");
+				
 				break;
 			}
 		}
@@ -122,7 +122,7 @@ static bool make_token(char *e) {
 			return false;
 		}
 	}
-	printf("here4\n");
+	
 	nr_token--;
 	return true; 
 }
@@ -184,7 +184,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 uint32_t sumbds(p,q)		//表达式求值
 {
 	if(p>q){
-		printf("%d",1);
+		printf("here");
 		assert(0);
 	}
 	else if(p==q)
@@ -222,7 +222,7 @@ uint32_t expr(char *e, bool *success) {
 		return 0;
 	}
 
-	//printf("%s\n", e);
+	printf("%s\n", e);
 
 	/* TODO: Insert codes to evaluate the expression. */
 	return sumbds(0,nr_token);
