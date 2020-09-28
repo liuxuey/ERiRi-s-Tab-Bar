@@ -172,7 +172,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 				flag=0;						//将do op定位到右括号
 			}
 			if(flag==0){
-			if(dominantop.priority1<=tokens[i].priority1)	//比较优先级
+			if(dominantop.priority1>=tokens[i].priority1)	//比较优先级
 			{
 				printf("%d\n",tokens[i].priority1);
 				dominantop=tokens[i];
