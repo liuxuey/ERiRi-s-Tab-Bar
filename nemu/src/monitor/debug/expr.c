@@ -184,7 +184,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 uint32_t sumbds(p,q)		//表达式求值
 {
 	if(p>q){
-		printf("here");
+		printf("here\n");
 		assert(0);
 	}
 	else if(p==q)
