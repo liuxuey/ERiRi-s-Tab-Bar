@@ -174,7 +174,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 			if(flag==0){
 			if(dominantop.priority1>=tokens[i].priority1)	//比较优先级
 			{
-				printf("%d\n",tokens[i].priority1);
+				
 				dominantop=tokens[i];
 				j=i;						//do op的定位
 			}}
@@ -207,7 +207,6 @@ uint32_t sumbds(p,q)		//表达式求值
 		int op;
 		
 		op=finddominantoprator(p,q);
-		printf("%d  here 1 \n",op);
 		uint32_t val1=sumbds(p,op-1);
 		uint32_t val2=sumbds(op+1,q);
 		switch (tokens[op].type)
