@@ -55,7 +55,7 @@ void init_regex() {
 
 typedef struct token {
 	int type;	//token的类型
-	char* str;	//token里的数据
+	char str[32];	//token里的数据
 	int priority1; //token的优先级
 } Token;
 
