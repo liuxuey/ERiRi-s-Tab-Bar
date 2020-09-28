@@ -98,9 +98,10 @@ static int cmd_exam(char *args)
 	}
 static int cmd_cmpter(char* args)
 {
-	bool i=1;
-	bool *sus=&i;
-	printf("%d",expr(args, sus));
+	
+	bool sus;
+	printf("%d\n",expr(args, &sus));
+	printf("\n");
 	return 0;
 }
 static int cmd_help(char *args);
