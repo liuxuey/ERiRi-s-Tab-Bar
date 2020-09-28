@@ -184,7 +184,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 uint32_t sumbds(p,q)		//表达式求值
 {
 	if(p>q){
-		printf("%d,   %d\n",p,q);
+				//printf("%d,   %d\n",p,q);
 		assert(0);
 	}
 	else if(p==q)
@@ -202,6 +202,7 @@ uint32_t sumbds(p,q)		//表达式求值
 	else 
 	{
 		int op;
+		printf("%d",op);
 		op=finddominantoprator(p,q);
 		uint32_t val1=sumbds(p,op-1);
 		uint32_t val2=sumbds(op+1,q);
