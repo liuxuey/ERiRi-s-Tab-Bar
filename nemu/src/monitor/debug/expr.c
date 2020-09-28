@@ -184,6 +184,7 @@ bool check_parentheses(int p,int q){//最后的括号对应
 uint32_t sumbds(p,q)		//表达式求值
 {
 	if(p>q){
+		printf("%d",1);
 		assert(0);
 	}
 	else if(p==q)
@@ -221,7 +222,7 @@ uint32_t expr(char *e, bool *success) {
 		return 0;
 	}
 
-	printf("%s\n", e);
+	//printf("%s\n", e);
 
 	/* TODO: Insert codes to evaluate the expression. */
 	return sumbds(0,nr_token);
