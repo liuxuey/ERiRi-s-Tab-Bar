@@ -101,7 +101,7 @@ static int cmd_cmpter(char* args)
 	
 	bool sus;
 	printf("%d\n",expr(args, &sus));
-	printf("\n");
+	
 	return 0;
 }
 static int cmd_help(char *args);
