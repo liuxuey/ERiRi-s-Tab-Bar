@@ -102,8 +102,8 @@ static bool make_token(char *e) {
 					case ')': {tokens[nr_token].type=')'; nr_token++; tokens[nr_token].priority1=100;break;}
 					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}
 					case 'i': {
-							   printf("%d\n", nr_token); tokens[nr_token].type='i';
-							   
+							    tokens[nr_token].type='i';
+							   nr_token++;
 							   strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
 							   tokens[nr_token].str[substr_len] = '\0';
 							   
