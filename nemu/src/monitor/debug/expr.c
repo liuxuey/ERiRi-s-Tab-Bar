@@ -26,7 +26,7 @@ static struct rule {
 	{"\\-", '-'},					// minus
 	{"\\*", '*'},					// mutiply
 	{"\\/", '/'},					// divide
-	{"[0-9]+", NUMBER},					// number
+	{"[0-9]{1,10}", NUMBER},					// number
 	{"\\(",'('},					// zuokuohao
 	{"\\)",')'},					// youkuohao
 	{"==", EQ}						// equal
