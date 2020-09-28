@@ -159,25 +159,24 @@ bool check_parentheses(int p,int q){//最后的括号对应
 		 //assert(check_parentheses(p,q),"表达式错误！");
 		int i;
 		int j=p;
+		int flag=0;					//记录有没有左括号
 		Token dominantop=tokens[p];	//从p位置开始找
 		for(i=p;i<=q;i++)
 		{
 			if(tokens[i].type=='(') 	//读入左括号
 			{
-				dominantop=tokens[i];
-				j=i;    				//将dominantop定位到左括号
+				flag=1;    				//将dominantop定位到左括号
 			}
-			else if(dominantop.type=='(')	//do op为左括号
+			else if(tokens[i].type==')')	//do op为左括号
 			{
-				if(tokens[i].type==')')		//读到右括号
-				{dominantop=tokens[i];
-				j=i;}						//将do op定位到右括号
+				flag=0;						//将do op定位到右括号
 			}
-			else if(dominantop.priority1<=tokens[i].priority1)	//比较优先级
+			if(flag==0){
+			if(dominantop.priority1<=tokens[i].priority1)	//比较优先级
 			{
 				dominantop=tokens[i];
 				j=i;						//do op的定位
-			}
+			}}
 		}
 		return j;
 	}
