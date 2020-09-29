@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ = '=' , NUMBER = 'i'
+	NOTYPE = 256, EQ = '=' , NUMBER = 'i',hex,reg
 	/* TODO: Add more token types */
 
 };
@@ -20,13 +20,15 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
-	
+	{"0x%s",hex},					//十六位
+	{"$%s",reg},					//寄存器
+
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"\\-", '-'},					// minus
 	{"\\*", '*'},					// mutiply
 	{"\\/", '/'},					// divide
-	{"[0-9]{1,10}", NUMBER},					// number
+	{"[0-9]{1,10}", NUMBER},		// number
 	{"\\(",'('},					// zuokuohao
 	{"\\)",')'},					// youkuohao
 	{"==", EQ}						// equal
@@ -233,6 +235,8 @@ uint32_t sumbds(p,q)		//表达式求值
 		uint32_t val2=sumbds(op+1,q);
 		switch (tokens[op].type)
 		{
+		case EQ:  if(val1==val2) return 1;
+				  else return 0;
 		case '+': return val1+val2;
 		case '-': return val1-val2;
 		case '*': return val1*val2;
@@ -255,7 +259,7 @@ uint32_t expr(char *e, bool *success) {
 	int j;
 	/* TODO: Insert codes to evaluate the expression. */
 	uint32_t k=sumbds(0,nr_token);
-	for(i=0;i<=nr_token;i++)
+	for(i=0;i<=nr_token;i++)		//清空前面存在的字符串
 	{
 		for(j=0;j<32;j++)
 		{
