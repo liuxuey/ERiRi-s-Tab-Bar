@@ -129,10 +129,19 @@ static bool make_token(char *e) {
 					case 108:	tokens[nr_token].type=108;
 								tokens[nr_token].priority1=0;
 								nr_token++;
-								break;		//		！=
+								break;		//		！= 不等于
 					case 110:	tokens[nr_token].type=110;
-								tokens[nr_token].priority1=1;
-
+								tokens[nr_token].priority1=-4;
+								nr_token++;
+								break;		//		&& 与运算
+					case 111:	tokens[nr_token].type=111;
+								tokens[nr_token].priority1=-5;
+								nr_token++;
+								break;		//		||	或运算
+					case 112:	tokens[nr_token].type=112;
+								tokens[nr_token].priority1=13;
+								nr_token++;
+								break;		//		!	阶乘运算
 					default: panic("please implement me");
 				}
 				if(tokens[0].type=='-')
@@ -226,15 +235,49 @@ uint32_t sumbds(p,q)		//表达式求值
 {
 	//if(!check_parentheses(p,q))
 	//	assert(0);
-	if(p>q){
-				//printf("%d,   %d\n",p,q);
+	if(p>q){// 不合法的情况
+				
 		assert(0);
 	}
 	else if(p==q)
 	{
 		int n=0;
 		//printf("%s",tokens[p].str);
-		sscanf(tokens[p].str,"%d",&n);
+		if(tokens[p].type=='i'){
+		sscanf(tokens[p].str,"%d",&n);}
+		if(tokens[p].type==106)
+		{
+			sscanf(tokens[p].str,"%x",&n);
+		}
+		if(tokens[p].type==107)
+		{
+			if(!strcmp(tokens[p].str,"$eax"))	n=cpu.gpr[0]._32;
+			if(!strcmp(tokens[p].str,"$ecx"))	n=cpu.gpr[1]._32;
+			if(!strcmp(tokens[p].str,"$edx"))	n=cpu.gpr[2]._32;
+			if(!strcmp(tokens[p].str,"$ebx"))	n=cpu.gpr[3]._32;
+			if(!strcmp(tokens[p].str,"$esp"))	n=cpu.gpr[4]._32;
+			if(!strcmp(tokens[p].str,"$ebp"))	n=cpu.gpr[5]._32;
+			if(!strcmp(tokens[p].str,"$esi"))	n=cpu.gpr[6]._32;
+			if(!strcmp(tokens[p].str,"$edi"))	n=cpu.gpr[7]._32;
+			if(!strcmp(tokens[p].str,"$ax"))	n=cpu.gpr[0]._16;
+			if(!strcmp(tokens[p].str,"$cx"))	n=cpu.gpr[1]._16;
+			if(!strcmp(tokens[p].str,"$bx"))	n=cpu.gpr[2]._16;
+			if(!strcmp(tokens[p].str,"$dx"))	n=cpu.gpr[3]._16;
+			if(!strcmp(tokens[p].str,"$sp"))	n=cpu.gpr[4]._16;
+			if(!strcmp(tokens[p].str,"$bp"))	n=cpu.gpr[5]._16;
+			if(!strcmp(tokens[p].str,"$si"))	n=cpu.gpr[6]._16;
+			if(!strcmp(tokens[p].str,"$di"))	n=cpu.gpr[7]._16;
+			if(!strcmp(tokens[p].str,"$al"))	n=cpu.gpr[0]._8[0];
+			if(!strcmp(tokens[p].str,"$ah"))	n=cpu.gpr[0]._8[1];
+			if(!strcmp(tokens[p].str,"$cl"))	n=cpu.gpr[1]._8[0];
+			if(!strcmp(tokens[p].str,"$ch"))	n=cpu.gpr[1]._8[1];
+			if(!strcmp(tokens[p].str,"$dl"))	n=cpu.gpr[2]._8[0];
+			if(!strcmp(tokens[p].str,"$dh"))	n=cpu.gpr[2]._8[1];
+			if(!strcmp(tokens[p].str,"$bl"))	n=cpu.gpr[3]._8[0];
+			if(!strcmp(tokens[p].str,"$bh"))	n=cpu.gpr[3]._8[1];
+
+			
+		}
 		
 		return n;
 	}
