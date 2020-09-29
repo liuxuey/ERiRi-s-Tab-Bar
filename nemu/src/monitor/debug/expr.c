@@ -7,7 +7,8 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ = '=' , NUMBER = 'i',hex,reg
+	NOTYPE = 256, EQ = '=' , NUMBER = 'i',hex,reg,nottrue,a,yu,huo,muiply
+	
 	/* TODO: Add more token types */
 
 };
@@ -20,9 +21,13 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
-	{"0x%s",hex},					//十六位
-	{"$%s",reg},					//寄存器
-
+	{"0x[0-9,a-f]{1,8}",hex},					//十六位
+	{"\$[a-z]{2,3}",reg},					//寄存器
+	{"[!=]",nottrue},				//不等于
+	{"[&&]",yu}	,					//与运算
+	{"[||]",huo},					//或运算
+	{"[!]",muiply},				//阶乘运算
+						
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
 	{"\\-", '-'},					// minus
@@ -42,7 +47,7 @@ static regex_t re[NR_REGEX];
  * Therefore we compile them only once before any usage.
  */
 void init_regex() {
-	int i;
+	int i;$
 	char error_msg[128];
 	int ret;
 
@@ -102,7 +107,7 @@ static bool make_token(char *e) {
 					case '/': {tokens[nr_token].type='/'; tokens[nr_token].priority1=12; nr_token++;  break;}
 					case '(': {tokens[nr_token].type='('; tokens[nr_token].priority1=222; nr_token++; break;}
 					case ')': {tokens[nr_token].type=')'; tokens[nr_token].priority1=222; nr_token++; break;}
-					case EQ: {tokens[nr_token].type=EQ; nr_token++; break;}
+					case EQ: {tokens[nr_token].type=EQ; tokens[nr_token].priority1=0; nr_token++; break;}
 					case 'i': {
 							    tokens[nr_token].type='i';
 							   tokens[nr_token].priority1=10000000;
@@ -111,6 +116,23 @@ static bool make_token(char *e) {
 							   
 							   
 							    break;}
+					case 106:	tokens[nr_token].type=106;
+								tokens[nr_token].priority1=10000000;
+								strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
+								nr_token++;
+								break;		// 		十六进制
+					case 107:	tokens[nr_token].type=107;
+								tokens[nr_token].priority1=10000000;
+								strncpy(tokens[nr_token].str,&e[position-substr_len],substr_len);
+								nr_token++;
+								break;		//		寄存器
+					case 108:	tokens[nr_token].type=108;
+								tokens[nr_token].priority1=0;
+								nr_token++;
+								break;		//		！=
+					case 110:	tokens[nr_token].type=110;
+								tokens[nr_token].priority1=
+
 					default: panic("please implement me");
 				}
 				if(tokens[0].type=='-')
