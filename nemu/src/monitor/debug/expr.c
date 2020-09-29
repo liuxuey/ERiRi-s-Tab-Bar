@@ -287,11 +287,12 @@ uint32_t sumbds(p,q)		//表达式求值
 		return sumbds(p+1,q-1);
 	}
 	else 
-	{
+	{	
 		if(tokens[p].type=='m')
 		{
 			return sumbds(p+1,q)*(-1);
 		}//出现负号的情况
+		
 		int op;
 		
 		op=finddominantoprator(p,q);
@@ -306,6 +307,12 @@ uint32_t sumbds(p,q)		//表达式求值
 		case '-': return val1-val2;
 		case '*': return val1*val2;
 		case '/': return val1/val2;
+		case 108: if(val1==val2) return 0;
+				  else return 1;
+		case 110: if(val1&&val2) return 1;
+				  else return 0;
+		case 111: if(val1||val2) return 1;
+				  else return 0;
 		
 		
 		default: assert(0);
