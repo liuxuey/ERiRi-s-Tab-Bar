@@ -22,7 +22,7 @@ static struct rule {
 	 * Pay attention to the precedence level of different rules.
 	 */
 	{"0x[0-9,a-f]{1,8}",hex},					//十六位
-	{"\$[a-z]{2,3}",reg},					//寄存器
+	//{"\$[a-z]{2,3}",reg},					//寄存器
 	{"[!=]",nottrue},				//不等于
 	{"[&&]",yu}	,					//与运算
 	{"[||]",huo},					//或运算
@@ -47,7 +47,7 @@ static regex_t re[NR_REGEX];
  * Therefore we compile them only once before any usage.
  */
 void init_regex() {
-	int i;$
+	int i;
 	char error_msg[128];
 	int ret;
 
@@ -101,7 +101,7 @@ static bool make_token(char *e) {
 				
 
 				switch(rules[i].token_type) {
-					case '+': {tokens[nr_token].type='+'; tokens[nr_token].priority1=1; nr_token++;  break;}   //case "+"
+					case 43: {tokens[nr_token].type=43; tokens[nr_token].priority1=1; nr_token++;  break;}   //case "+"
 					case '-': {tokens[nr_token].type='-'; tokens[nr_token].priority1=1; nr_token++; break;}	//case "-"
 					case '*': {tokens[nr_token].type='*'; tokens[nr_token].priority1=12; nr_token++; break;}
 					case '/': {tokens[nr_token].type='/'; tokens[nr_token].priority1=12; nr_token++;  break;}
@@ -131,7 +131,7 @@ static bool make_token(char *e) {
 								nr_token++;
 								break;		//		！=
 					case 110:	tokens[nr_token].type=110;
-								tokens[nr_token].priority1=
+								tokens[nr_token].priority1=0;
 
 					default: panic("please implement me");
 				}
