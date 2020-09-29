@@ -111,6 +111,23 @@ static bool make_token(char *e) {
 							    break;}
 					default: panic("please implement me");
 				}
+				if(tokens[0].type=='-')
+				{
+					tokens[0].type='m';
+					tokens[0].priority1=1;
+				}
+				int case_minus;
+				for(case_minus=0;case_minus<nr_token;case_minus++)
+				{
+					if(tokens[case_minus].type=='-')
+					{
+						if(tokens[case_minus-1].type!=(')'||'i'))
+						{
+							tokens[case_minus].type='m'; 
+							tokens[case_minus].priority1=100;
+						}
+					}
+				}
 
 				
 				break;
@@ -204,6 +221,10 @@ uint32_t sumbds(p,q)		//表达式求值
 	}
 	else 
 	{
+		if(tokens[p].type=='m')
+		{
+			return sumbds(p+1,q)*(-1);
+		}//出现负号的情况
 		int op;
 		
 		op=finddominantoprator(p,q);
