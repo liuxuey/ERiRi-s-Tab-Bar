@@ -22,7 +22,7 @@ static struct rule {
 	 * Pay attention to the precedence level of different rules.
 	 */
 	{"0x[0-9,a-f]{1,8}",hex},					//十六位
-	//{"\$[a-z]{2,3}",reg},					//寄存器
+	{"\\$[a-z]{2,3}",reg},					//寄存器
 	{"[!=]",nottrue},				//不等于
 	{"[&&]",yu}	,					//与运算
 	{"[||]",huo},					//或运算
@@ -131,7 +131,7 @@ static bool make_token(char *e) {
 								nr_token++;
 								break;		//		！=
 					case 110:	tokens[nr_token].type=110;
-								tokens[nr_token].priority1=0;
+								tokens[nr_token].priority1=1;
 
 					default: panic("please implement me");
 				}
