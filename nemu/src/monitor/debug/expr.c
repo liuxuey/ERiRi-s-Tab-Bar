@@ -233,8 +233,7 @@ uint32_t expr(char *e, bool *success) {
 	int i;
 	int j;
 	/* TODO: Insert codes to evaluate the expression. */
-	
-	return sumbds(0,nr_token);
+	uint32_t k=sumbds(0,nr_token);
 	for(i=0;i<=nr_token;i++)
 	{
 		for(j=0;j<32;j++)
@@ -244,6 +243,8 @@ uint32_t expr(char *e, bool *success) {
 		printf("%s",tokens[i].str);
 	}
 	nr_token=0;
+	return k;
+	
 
 	panic("please implement me");
 	return 0;
