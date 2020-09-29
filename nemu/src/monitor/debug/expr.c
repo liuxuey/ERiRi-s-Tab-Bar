@@ -240,7 +240,7 @@ uint32_t expr(char *e, bool *success) {
 		{
 			tokens[i].str[j]='\0';
 		}
-		printf("%s\n",tokens[i].str);
+		
 	}
 	nr_token=0;
 	return k;
