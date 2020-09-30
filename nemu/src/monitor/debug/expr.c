@@ -174,8 +174,8 @@ static bool make_token(char *e) {
 				for(case_pointer=0;case_pointer<nr_token;case_pointer++)
 				{
 					if(tokens[case_pointer].type=='*')
-					{ 
-						if(tokens[case_pointer-1].type!=(')'&&'i'&&106&&107))
+					{ printf("%d\n",tokens[case_pointer-1].type);
+						if(tokens[case_pointer-1].type!=(')'||'i'||106||107))
 						{	printf("i find a pointer!\n");
 							tokens[case_pointer].type=113; 
 
