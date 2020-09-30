@@ -290,10 +290,7 @@ uint32_t sumbds(p,q)		//表达式求值
 	}
 	else 
 	{	
-		if(tokens[p].type=='m')
-		{
-			return sumbds(p+1,q)*(-1);
-		}//出现负号的情况
+		
 		
 		int op;
 		
