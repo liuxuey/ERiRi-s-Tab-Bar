@@ -251,13 +251,24 @@ bool check_parentheses(int p,int q){//最后的括号对应
 			{
 				flag=0;						//将do op定位到右括号
 			}
-			if(flag==0){
+			if(flag==0){if(dominantop.type!=112){
+				if(dominantop.type!='m'){
 			if(dominantop.priority1>=tokens[i].priority1)	//比较优先级
 			{
 				
 				dominantop=tokens[i];
 				j=i;						//do op的定位
-			}}
+			}}}
+			else {
+				if(dominantop.priority1>tokens[i].priority1)	//比较优先级
+			{
+				
+				dominantop=tokens[i];
+				j=i;						//do op的定位
+			}
+			}
+			
+			}
 		}
 		return j;
 	}
