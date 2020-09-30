@@ -176,7 +176,7 @@ static bool make_token(char *e) {
 					if(tokens[case_pointer].type=='*')
 					{ 
 						if(tokens[case_pointer-1].type!=((')'||'i')||(106||107)))
-						{	printf("i find a pointer!\n");
+						{	printf("i11 find a pointer!\n");
 							tokens[case_pointer].type=113; 
 
 							tokens[case_pointer].priority1=15;
