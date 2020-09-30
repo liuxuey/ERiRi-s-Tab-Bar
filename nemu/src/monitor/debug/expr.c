@@ -25,7 +25,7 @@ static struct rule {
 	{"\\$[a-z]{2,3}",reg},					//寄存器
 	{"!",muiply},				//阶乘运算
 	{"!=",nottrue},				//不等于
-	{"[&]{2}",yu}	,					//与运算
+	{"&&",yu}	,					//与运算
 	{"[||]{2}",huo},					//或运算
 						
 	{" +",	NOTYPE},				// spaces
