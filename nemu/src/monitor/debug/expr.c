@@ -164,7 +164,25 @@ static bool make_token(char *e) {
 						}
 					}
 				}
+				if(tokens[0].type=='*')
+				{
+					tokens[0].type=113;
+					printf("3\n");
+					tokens[0].priority1=15;
+				}
+				int case_pointer;
+				for(case_pointer=0;case_pointer<nr_token;case_pointer++)
+				{
+					if(tokens[case_pointer].type=='*')
+					{
+						if(tokens[case_pointer-1].type!=(')'||'i'))
+						{
+							tokens[case_pointer].type=113; 
 
+							tokens[case_pointer].priority1=15;
+						}
+					}
+				}
 				
 				break;
 			}
