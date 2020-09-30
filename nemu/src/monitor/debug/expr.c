@@ -311,7 +311,7 @@ uint32_t sumbds(p,q)		//表达式求值
 				  }
 				  return sum;
 		}
-		printf("%d,%d\n",op+1,q);
+		else{
 		
 		uint32_t val1=sumbds(p,op-1);
 		
@@ -336,7 +336,7 @@ uint32_t sumbds(p,q)		//表达式求值
 
 		
 		
-		default: assert(0);
+		default: assert(0);}
 			
 		}
 	}
