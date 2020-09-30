@@ -308,7 +308,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		case '-': return val1-val2;
 		case '*': return val1*val2;
 		case '/': return val1/val2;
-		case 'm': return (-1)*val2;
+		case 'm': return val2;
 
 		case 108: if(val1==val2) return 0;
 				  else return 1;
