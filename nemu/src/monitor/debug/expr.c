@@ -338,7 +338,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		
 		uint32_t val2=sumbds(op+1,q);
 		printf("%d\n",op);
-		printf("%d\n",tokens[op].type);
+		printf("%d\n",tokens[0].type);
 		switch (tokens[op].type)
 		{
 		case EQ:  if(val1==val2) return 1;
