@@ -147,7 +147,7 @@ static bool make_token(char *e) {
 				if(tokens[0].type=='-')
 				{
 					tokens[0].type='m';
-					tokens[0].priority1=1;
+					tokens[0].priority1=13;
 				}
 				int case_minus;
 				for(case_minus=0;case_minus<nr_token;case_minus++)
@@ -299,6 +299,8 @@ uint32_t sumbds(p,q)		//表达式求值
 		
 		uint32_t val1=sumbds(p,op-1);
 		uint32_t val2=sumbds(op+1,q);
+		int n=val1;
+		int sum=1;
 		switch (tokens[op].type)
 		{
 		case EQ:  if(val1==val2) return 1;
@@ -307,12 +309,22 @@ uint32_t sumbds(p,q)		//表达式求值
 		case '-': return val1-val2;
 		case '*': return val1*val2;
 		case '/': return val1/val2;
+		case 'm': return (-1)*val2;
+
 		case 108: if(val1==val2) return 0;
 				  else return 1;
 		case 110: if(val1&&val2) return 1;
 				  else return 0;
 		case 111: if(val1||val2) return 1;
 				  else return 0;
+
+		case 112: 
+				  
+				  for(n=val1;n>0;n--)
+				  {
+					  sum*=n;
+				  }
+				  return sum;
 		
 		
 		default: assert(0);
