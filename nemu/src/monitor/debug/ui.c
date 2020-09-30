@@ -65,12 +65,13 @@ static int cmd_info(char *args) {
 	 printf("di : %d \n",cpu.gpr[7]._16);
 	 printf("al : %d \n",cpu.gpr[0]._8[0]);
 	 printf("ah : %d \n",cpu.gpr[0]._8[1]);
-	 printf("cl : %d \n",cpu.gpr[0]._8[0]);
-	 printf("ch : %d \n",cpu.gpr[0]._8[1]);
-	 printf("dl : %d \n",cpu.gpr[0]._8[0]);
-	 printf("dh : %d \n",cpu.gpr[0]._8[1]);
-	 printf("bl : %d \n",cpu.gpr[0]._8[0]);
-	 printf("bh : %d \n",cpu.gpr[0]._8[1]);
+	 printf("cl : %d \n",cpu.gpr[1]._8[0]);
+	 printf("ch : %d \n",cpu.gpr[1]._8[1]);
+	 printf("dl : %d \n",cpu.gpr[2]._8[0]);
+	 printf("dh : %d \n",cpu.gpr[2]._8[1]);
+	 printf("bl : %d \n",cpu.gpr[3]._8[0]);
+	 printf("bh : %d \n",cpu.gpr[3]._8[1]);
+	 printf("eip : %d \n",cpu.eip);
 	 
 	}
 	return 0;
