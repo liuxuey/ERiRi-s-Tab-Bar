@@ -148,7 +148,7 @@ static bool make_token(char *e) {
 				if(tokens[0].type=='-')
 				{
 					tokens[0].type='m';
-					printf("3\n");
+					
 					tokens[0].priority1=13;
 				}
 				int case_minus;
@@ -331,23 +331,17 @@ uint32_t sumbds(p,q)		//表达式求值
 		}
 		else if(tokens[op].type==112)
 		{
-			int sum=1;
-			uint32_t n;
-			uint32_t val=sumbds(p,op-1);
 			
-			for(n=val;n>0;n--)
-				  {
-					  sum*=n;
-				  }
-				  return sum;
+			uint32_t val=sumbds(p,op-1);
+			if(val) return 0;
+			else return 1;
 		}
 		else{
 		
 		uint32_t val1=sumbds(p,op-1);
 		
 		uint32_t val2=sumbds(op+1,q);
-		printf("%d\n",op);
-		printf("%d\n",tokens[op].type);
+		
 		switch (tokens[op].type)
 		{
 		case EQ:  if(val1==val2) return 1;
