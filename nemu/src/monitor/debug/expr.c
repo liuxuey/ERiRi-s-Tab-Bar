@@ -156,12 +156,16 @@ static bool make_token(char *e) {
 				{
 					if(tokens[case_minus].type=='-')
 					{
-						if(tokens[case_minus-1].type!=(')'||'i'))
-						{
+						if(tokens[case_minus-1].type!=')')
+						{if(tokens[case_minus-1].type!='i')
+							{
+								if(tokens[case_minus-1].type!=106){
+									if(tokens[case_minus-1].type!=107){
+							
 							tokens[case_minus].type='m'; 
 
 							tokens[case_minus].priority1=13;
-						}
+						}}}}
 					}
 				}
 				if(tokens[0].type=='*')
@@ -174,7 +178,7 @@ static bool make_token(char *e) {
 				for(case_pointer=0;case_pointer<nr_token;case_pointer++)
 				{
 					if(tokens[case_pointer].type=='*')
-					{ printf("%d\n",tokens[case_pointer-1].type);
+					{ 
 						if(tokens[case_pointer-1].type!=')')
 						{	
 							if(tokens[case_pointer-1].type!='i')
