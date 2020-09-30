@@ -140,7 +140,7 @@ static bool make_token(char *e) {
 								nr_token++;
 								break;		//		||	或运算
 					case 112:	tokens[nr_token].type=112;
-								tokens[nr_token].priority1=14;
+								tokens[nr_token].priority1=13;
 								nr_token++;
 								break;		//		!	阶乘运算
 					default: panic("please implement me");
@@ -149,7 +149,7 @@ static bool make_token(char *e) {
 				{
 					tokens[0].type='m';
 					
-					tokens[0].priority1=13;
+					tokens[0].priority1=1;
 				}
 				int case_minus;
 				for(case_minus=0;case_minus<nr_token;case_minus++)
