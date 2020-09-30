@@ -324,12 +324,19 @@ uint32_t sumbds(p,q)		//表达式求值
 		
 		op=finddominantoprator(p,q);
 		
-		if(tokens[op].type=='m')
+		 if(tokens[op].type==112)
+		{
+			
+			uint32_t val=sumbds(op+1,q);
+			if(val) return 0;
+			else return 1;
+		}
+		else if(tokens[op].type=='m')
 		{
 			uint32_t val=sumbds(op+1,q);
 			return (-1)*val;
 		}
-		else if(tokens[op].type==112)
+		 if(tokens[op].type==112)
 		{
 			
 			uint32_t val=sumbds(op+1,q);
