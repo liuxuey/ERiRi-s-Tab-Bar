@@ -147,6 +147,7 @@ static bool make_token(char *e) {
 				if(tokens[0].type=='-')
 				{
 					tokens[0].type='m';
+					printf("3\n");
 					tokens[0].priority1=13;
 				}
 				int case_minus;
@@ -157,7 +158,8 @@ static bool make_token(char *e) {
 						if(tokens[case_minus-1].type!=(')'||'i'))
 						{
 							tokens[case_minus].type='m'; 
-							tokens[case_minus].priority1=100;
+
+							tokens[case_minus].priority1=13;
 						}
 					}
 				}
