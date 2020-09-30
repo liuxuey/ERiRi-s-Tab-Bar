@@ -295,6 +295,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		int op;
 		
 		op=finddominantoprator(p,q);
+		printf("%d,%d\n",op+1,q);
 		printf("%d\n",sumbds(op+1,q));
 		uint32_t val1=sumbds(p,op-1);
 		uint32_t val2=sumbds(op+1,q);
