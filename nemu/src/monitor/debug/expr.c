@@ -175,8 +175,8 @@ static bool make_token(char *e) {
 				{
 					if(tokens[case_pointer].type=='*')
 					{ 
-						if(tokens[case_pointer-1].type!=((')'||'i')||(106||107)))
-						{	printf("i11 find a pointer!\n");
+						if(tokens[case_pointer-1].type!=(')'&&'i'&&106&&107))
+						{	printf("i find a pointer!\n");
 							tokens[case_pointer].type=113; 
 
 							tokens[case_pointer].priority1=15;
@@ -338,7 +338,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		
 		uint32_t val2=sumbds(op+1,q);
 		printf("%d\n",op);
-		printf("%d\n",tokens[0].type);
+		printf("%d\n",tokens[op].type);
 		switch (tokens[op].type)
 		{
 		case EQ:  if(val1==val2) return 1;
