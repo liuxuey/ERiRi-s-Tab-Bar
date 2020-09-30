@@ -139,7 +139,7 @@ static bool make_token(char *e) {
 								nr_token++;
 								break;		//		||	或运算
 					case 112:	tokens[nr_token].type=112;
-								tokens[nr_token].priority1=13;
+								tokens[nr_token].priority1=14;
 								nr_token++;
 								break;		//		!	阶乘运算
 					default: panic("please implement me");
