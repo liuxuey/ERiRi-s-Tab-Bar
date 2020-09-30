@@ -295,13 +295,28 @@ uint32_t sumbds(p,q)		//表达式求值
 		int op;
 		
 		op=finddominantoprator(p,q);
+		if(tokens[op].type=='m')
+		{
+			uint32_t val=sumbds(op+1,q);
+			return (-1)*val;
+		}
+		else if(tokens[op].type==112)
+		{
+			int sum=1;
+			uint32_t n;
+			uint32_t val=sumbds(p,op-1);
+			for(n=val;n>0;n--)
+				  {
+					  sum*=n;
+				  }
+				  return sum;
+		}
 		printf("%d,%d\n",op+1,q);
 		
 		uint32_t val1=sumbds(p,op-1);
 		
 		uint32_t val2=sumbds(op+1,q);
-		int n;
-		int sum=1;
+
 		switch (tokens[op].type)
 		{
 		case EQ:  if(val1==val2) return 1;
@@ -310,7 +325,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		case '-': return val1-val2;
 		case '*': return val1*val2;
 		case '/': return val1/val2;
-		case 'm': return val2;
+		
 
 		case 108: if(val1==val2) return 0;
 				  else return 1;
@@ -319,13 +334,6 @@ uint32_t sumbds(p,q)		//表达式求值
 		case 111: if(val1||val2) return 1;
 				  else return 0;
 
-		case 112: 
-				  
-				  for(n=val1;n>0;n--)
-				  {
-					  sum*=n;
-				  }
-				  return sum;
 		
 		
 		default: assert(0);
