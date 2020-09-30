@@ -332,7 +332,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		else if(tokens[op].type==112)
 		{
 			
-			uint32_t val=sumbds(p,op-1);
+			uint32_t val=sumbds(op+1,q);
 			if(val) return 0;
 			else return 1;
 		}
