@@ -21,6 +21,7 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
+	{" +",	NOTYPE},
 	{"0x[0-9,a-f]{1,8}",hex},					//十六位
 	{"\\$[a-z]{2,3}",reg},					//寄存器
 	{"!",muiply},				//阶乘运算
@@ -28,7 +29,7 @@ static struct rule {
 	{"\\&\\&",yu}	,					//与运算
 	{"[||]{2}",huo},					//或运算
 						
-	{" +",	NOTYPE},				// spaces
+					// spaces
 	{"\\+", '+'},					// plus
 	{"\\-", '-'},					// minus
 	{"\\*", '*'},					// mutiply
