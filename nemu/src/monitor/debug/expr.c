@@ -316,6 +316,7 @@ uint32_t sumbds(p,q)		//表达式求值
 			if(!strcmp(tokens[p].str,"$dh"))	n=cpu.gpr[2]._8[1];
 			if(!strcmp(tokens[p].str,"$bl"))	n=cpu.gpr[3]._8[0];
 			if(!strcmp(tokens[p].str,"$bh"))	n=cpu.gpr[3]._8[1];
+			if(!strcmp(tokens[p].str,"$eip"))	n=cpu.eip;
 
 			
 		}
