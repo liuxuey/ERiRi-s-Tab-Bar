@@ -305,6 +305,7 @@ uint32_t sumbds(p,q)		//表达式求值
 			int sum=1;
 			uint32_t n;
 			uint32_t val=sumbds(p,op-1);
+			printf("%d,%d\n",op-1,p);
 			for(n=val;n>0;n--)
 				  {
 					  sum*=n;
