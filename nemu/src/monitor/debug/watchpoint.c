@@ -63,30 +63,29 @@ void new_wp(char * args, uint32_t n)
 }
 void free_wp(char *args)
 {
-	printf("woshishabi\n");
+	
 	WP *wp=head;
-	printf("woshishabi\n");
 	while(wp)
 	{
 		if(!strcmp(args,wp->str)) break;
 		wp=wp->next;
 	}
-	printf("woshishabi\n");
 	WP* head1=head;
 	while(head1!=wp)
 	{
 		head1=head1->next;
 	} 		//找到取出位置
-	printf("woshishabi\n");
 	WP* newwp=free_;
 	while(newwp->next!=NULL)
 	{
 		newwp=newwp->next;
 	}		//找到放置位置
-	printf("woshishabi\n");
 	head1->next=wp->next;
+	printf("woshishabi\n");
 	WP* wp1=wp->next;
+	printf("woshishabi\n");
 	wp1->NO=head1->NO+1; //取出
+	printf("woshishabi\n");
 	newwp->next=wp;
 	printf("woshishabi\n");
 	wp->next=NULL;
