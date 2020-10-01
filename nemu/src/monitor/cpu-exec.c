@@ -98,11 +98,14 @@ void cpu_exec(volatile uint32_t n) {
 			printf("%d\n",a->newvalue);
 			if(a->newvalue!=a->value)
 			{
-				printf("your watchpoint %s brokes",a->str);
+				printf("your watchpoint %s brokes\n",a->str);
 				nemu_state=STOP;
 				ui_mainloop();
 			}
+			if(a->next==NULL) break;
+
 			a=a->next;
+			
 		}
 
 #ifdef HAS_DEVICE
