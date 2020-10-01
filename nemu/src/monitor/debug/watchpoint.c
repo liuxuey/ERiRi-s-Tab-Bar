@@ -64,7 +64,7 @@ void new_wp(char * args, uint32_t n)
 void free_wp(char *args)
 {
 	printf("woshishabi\n");
-	WP *wp=free_;
+	WP *wp=head;
 	printf("woshishabi\n");
 	while(wp)
 	{

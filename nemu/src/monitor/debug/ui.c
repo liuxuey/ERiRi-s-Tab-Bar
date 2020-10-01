@@ -133,7 +133,8 @@ static int cmd_watch(char* args)
 }
 static int cmd_delete(char* args)
 {
-	free_wp(args);
+	char *arg=strtok(args," ");
+	free_wp(arg);
 	return 0;
 }
 static int cmd_help(char *args);
