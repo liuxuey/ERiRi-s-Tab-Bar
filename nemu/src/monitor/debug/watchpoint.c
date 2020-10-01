@@ -70,16 +70,31 @@ void free_wp(char *args)
 		if(!strcmp(args,wp->str)) break;
 		wp=wp->next;
 	}
-	WP* head1=head;
-	while(head1->next!=wp)
+	WP *w=wp;
+	while(w->next)
 	{
-		head1=head1->next;
-	} 		//找到取出位置
+		w=w->next;
+		w->NO--;
+	}
 	WP* newwp=free_;
 	while(newwp->next!=NULL)
 	{
 		newwp=newwp->next;
 	}		//找到放置位置
+	if(wp==head)
+		{
+			WP* wp1=wp->next;
+			head=wp1;
+			newwp->next=wp;
+			wp->next=NULL;
+			wp->NO=newwp->NO+1;
+			wp->flag=0;
+		}
+	else{WP* head1=head;
+	while(head1->next!=wp)
+	{
+		head1=head1->next;
+	} 		//找到取出位置
 	head1->next=wp->next;
 	printf("woshishabi\n");
 	WP* wp1=wp->next;
@@ -90,7 +105,7 @@ void free_wp(char *args)
 	printf("woshishabi\n");
 	wp->next=NULL;
 	wp->NO=newwp->NO+1;
-	wp->flag=0;
+	wp->flag=0;}
 }
 WP *retwppool()
 {
