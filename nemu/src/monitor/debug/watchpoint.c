@@ -83,6 +83,7 @@ void free_wp(char *args)
 	{
 		newwp=newwp->next;
 	}		//找到放置位置
+	printf("woshishabi\n");
 	head1->next=wp->next;
 	WP* wp1=wp->next;
 	wp1->NO=head1->NO+1; //取出
