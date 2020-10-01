@@ -88,7 +88,7 @@ void cpu_exec(volatile uint32_t n) {
 		WP *a=retwppool();
 		for(i=0;i<32;i++)
 		{
-			printf("%s/n",a[i].str);
+			printf("%s\n",a[i].str);
 			bool sus;
 			a[i].newvalue=expr(a[i].str, &sus);
 			if(a[i].newvalue!=a[i].value)
