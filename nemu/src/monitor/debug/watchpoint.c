@@ -72,7 +72,8 @@ void free_wp(char *args)
 	while(head1->next!=wp)
 	{
 		head1=head1->next;
-	} 		//找到取出位置	
+	} 		//找到取出位置
+	printf("woshishabi\n");
 	WP* newwp=free_;
 	while(newwp->next!=NULL)
 	{
