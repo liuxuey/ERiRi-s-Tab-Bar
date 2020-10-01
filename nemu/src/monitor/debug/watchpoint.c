@@ -52,12 +52,12 @@ void new_wp(char * args, uint32_t n)
 	{
 		head1=head1->next;
 	}
-	printf("3\n");
+	
 	head1->next=newwp1;
 	newwp1->NO=head1->NO+1;
 	newwp1->next=NULL;
 	newwp1->flag=1; 
-	printf("2\n");
+	
 	strcpy(newwp1->str,args);
 	newwp1->value=n;}
 }
