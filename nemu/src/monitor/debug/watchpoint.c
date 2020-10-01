@@ -71,7 +71,7 @@ void free_wp(char *args)
 		wp=wp->next;
 	}
 	WP* head1=head;
-	while(head1!=wp)
+	while(head1->next!=wp)
 	{
 		head1=head1->next;
 	} 		//找到取出位置
