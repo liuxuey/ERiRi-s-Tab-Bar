@@ -40,16 +40,16 @@ void new_wp(char * args, uint32_t n)
 	WP* newwp1=newwp->next;
 	newwp->next=NULL;
 	WP* head1=head;
-	if(head1==NULL)
+/*	if(head1==NULL)
 	{
 		head=newwp1;
 		newwp1->NO=1;
-		//newwp1->next=NULL;
+		newwp1->next=NULL;
 		newwp1->flag=1;
 		strcpy(newwp1->str,args);
 		newwp1->value=n;
-	}
-	else{while(head1->next!=NULL)
+	}*/
+	{while(head1->next!=NULL)
 	{
 		head1=head1->next;
 	}
