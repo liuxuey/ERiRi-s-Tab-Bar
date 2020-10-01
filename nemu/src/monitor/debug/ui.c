@@ -99,9 +99,9 @@ static int cmd_exam(char *args)//扫描内存
 	}
 static int cmd_cmpter(char* args)
 {
-	
+	char *arg=strtok(args," ");
 	bool sus;
-	printf("%d\n",expr(args, &sus));
+	printf("%d\n",expr(arg, &sus));
 	
 	return 0;
 }
