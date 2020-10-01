@@ -47,6 +47,7 @@ void new_wp(char * args, uint32_t n)
 		newwp1->next=NULL;
 		newwp1->flag=1;
 		strcpy(newwp1->str,args);
+		printf("%s\n",newwp1->str);
 		newwp1->value=n;
 	}
 	else 
