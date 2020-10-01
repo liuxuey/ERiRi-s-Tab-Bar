@@ -44,7 +44,7 @@ void new_wp(char * args, uint32_t n)
 	{
 		head=newwp1;
 		newwp1->NO=1;
-		newwp1->next=NULL;
+		//newwp1->next=NULL;
 		newwp1->flag=1;
 		strcpy(newwp1->str,args);
 		newwp1->value=n;
