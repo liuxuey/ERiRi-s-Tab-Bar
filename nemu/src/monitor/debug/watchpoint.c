@@ -19,6 +19,8 @@ void init_wp_pool() {
 	wp_pool[NR_WP - 1].next = NULL;
 
 	head = NULL;
+	head->NO=0;
+	head->next=NULL;
 	free_ = wp_pool;
 }
 
