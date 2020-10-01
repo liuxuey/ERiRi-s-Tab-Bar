@@ -90,6 +90,7 @@ void free_wp(char *args)
 	printf("woshishabi\n");
 	wp->next=NULL;
 	wp->NO=newwp->NO+1;
+	wp->flag=0;
 }
 WP *retwppool()
 {
