@@ -19,7 +19,7 @@
  * You can modify this value as you want.
  */
 #define MAX_INSTR_TO_PRINT 10
-
+WP *retwppool();
 int nemu_state = STOP;
 void ui_mainloop();
 int exec(swaddr_t);
@@ -86,7 +86,7 @@ void cpu_exec(volatile uint32_t n) {
 		/* TODO: check watchpoints here. */
 		int i;
 		WP *a=retwppool();
-		printf("1\n");
+		printf("%s\n",a[0].str);
 		for(i=0;i<32;i++)
 		{
 			
