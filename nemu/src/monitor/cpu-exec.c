@@ -87,12 +87,12 @@ void cpu_exec(volatile uint32_t n) {
 		/* TODO: check watchpoints here. */
 		int i;
 		WP *a=rethead();
-		printf("here1\n");
+		
 		for(i=0;i<32;i++)
 		{
 			if(a==NULL) break; 
 			bool sus;
-			printf("%s\n",a->str);
+			
 			a->newvalue=expr(a->str, &sus);
 			
 			
@@ -100,7 +100,7 @@ void cpu_exec(volatile uint32_t n) {
 			{
 				printf("your watchpoint %s brokes\n",a->str);
 				nemu_state=STOP;
-				ui_mainloop();
+				
 			}
 			if(a->next==NULL) break;
 
