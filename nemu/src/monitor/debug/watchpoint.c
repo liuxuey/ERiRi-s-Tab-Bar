@@ -19,8 +19,8 @@ void init_wp_pool() {
 	wp_pool[NR_WP - 1].next = NULL;
 
 	head = NULL;
-	//head->NO=0;
-	head->next=NULL;
+	head->NO=0;
+	
 	free_ = wp_pool;
 }
 
@@ -40,8 +40,16 @@ void new_wp(char * args, uint32_t n)
 	WP* newwp1=newwp->next;
 	newwp->next=NULL;
 	WP* head1=head;
-	
-	while(head1->next!=NULL)
+	if(head1==NULL)
+	{
+		head=newwp1;
+		newwp1->NO=1;
+		newwp1->next=NULL;
+		newwp1->flag=1;
+		strcpy(newwp1->str,args);
+		newwp1->value=n;
+	}
+	else{while(head1->next!=NULL)
 	{
 		head1=head1->next;
 	}
@@ -52,7 +60,7 @@ void new_wp(char * args, uint32_t n)
 	newwp1->flag=1; 
 	printf("2\n");
 	strcpy(newwp1->str,args);
-	newwp1->value=n;
+	newwp1->value=n;}
 }
 void free_wp(WP *wp)
 {
