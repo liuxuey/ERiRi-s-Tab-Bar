@@ -38,7 +38,7 @@ static struct rule {
 	{"\\(",'('},					// zuokuohao
 	{"\\)",')'},					// youkuohao
 	{"==", EQ},					// equal
-	{" +",	NOTYPE},
+	{" ",	NOTYPE},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
