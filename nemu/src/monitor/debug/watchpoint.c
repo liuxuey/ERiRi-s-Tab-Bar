@@ -20,7 +20,7 @@ void init_wp_pool() {
 
 	head = NULL;
 	//head->NO=0;
-	//head->next=NULL;
+	head->next=NULL;
 	free_ = wp_pool;
 }
 
