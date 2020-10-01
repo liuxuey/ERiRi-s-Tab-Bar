@@ -92,6 +92,7 @@ void cpu_exec(volatile uint32_t n) {
 		{
 			
 			bool sus;
+			printf("here2\n");
 			a->newvalue=expr(a->str, &sus);
 			printf("here2\n");
 			if(a->newvalue!=a->value)
