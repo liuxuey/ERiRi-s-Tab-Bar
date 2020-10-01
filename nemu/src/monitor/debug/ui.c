@@ -7,6 +7,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+WP *retwppool();
+WP *rethead();
 void cpu_exec(uint32_t);
 void new_wp(char * args, uint32_t n);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
@@ -73,6 +75,21 @@ static int cmd_info(char *args) {
 	 printf("bh : %d \n",cpu.gpr[3]._8[1]);
 	 printf("eip : %d \n",cpu.eip);
 	 
+	}
+	if(*arg=='w')
+	{
+		int i;
+		WP *a=rethead();
+		for(i=0;i<32;i++)
+		{
+			if(a==NULL) break; 
+			printf("%d  %s  %d  %d\n",a->NO,a->str,a->value,a->flag);
+			
+			if(a->next==NULL) break;
+
+			a=a->next;
+			
+		}
 	}
 	return 0;
 } 
