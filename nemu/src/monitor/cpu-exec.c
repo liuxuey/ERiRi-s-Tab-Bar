@@ -93,6 +93,7 @@ void cpu_exec(volatile uint32_t n) {
 			
 			bool sus;
 			a->newvalue=expr(a->str, &sus);
+			printf("here2\n");
 			if(a->newvalue!=a->value)
 			{
 				printf("your watchpoint %s brokes",a->str);
