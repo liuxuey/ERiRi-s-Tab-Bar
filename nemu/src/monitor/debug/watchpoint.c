@@ -5,10 +5,7 @@
 
 static WP wp_pool[NR_WP];
 static WP *head, *free_;
-WP *retwppool()
-{
-	return wp_pool;
-}
+
 void init_wp_pool() {
 	int i;
 	for(i = 0; i < NR_WP; i ++) {
@@ -83,5 +80,12 @@ void free_wp(WP *wp)
 	wp->next=NULL;
 	wp->NO=newwp->NO+1;
 }
-
+WP *retwppool()
+{
+	return wp_pool;
+}
+WP *rethead()
+{
+	return head;
+}
 

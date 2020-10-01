@@ -15,4 +15,5 @@ typedef struct watchpoint {
 
 } WP;
 WP *retwppool();
+WP *rethead();
 #endif

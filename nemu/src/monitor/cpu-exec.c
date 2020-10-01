@@ -20,6 +20,7 @@
  */
 #define MAX_INSTR_TO_PRINT 10
 WP *retwppool();
+WP *rethead();
 int nemu_state = STOP;
 void ui_mainloop();
 int exec(swaddr_t);
@@ -85,20 +86,21 @@ void cpu_exec(volatile uint32_t n) {
 
 		/* TODO: check watchpoints here. */
 		int i;
-		WP *a=retwppool();
+		WP *a=rethead();
 		printf("%d\n",a[0].value);
 		printf("%s\n",a[0].str);
 		for(i=0;i<32;i++)
 		{
 			
 			bool sus;
-			a[i].newvalue=expr(a[i].str, &sus);
-			if(a[i].newvalue!=a[i].value)
+			a->newvalue=expr(a->str, &sus);
+			if(a->newvalue!=a->value)
 			{
-				printf("your watchpoint %s brokes",a[i].str);
+				printf("your watchpoint %s brokes",a->str);
 				nemu_state=STOP;
 				ui_mainloop();
 			}
+			a=a->next;
 		}
 
 #ifdef HAS_DEVICE
