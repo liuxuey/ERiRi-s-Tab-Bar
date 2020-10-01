@@ -8,7 +8,7 @@
 #include <readline/history.h>
 
 void cpu_exec(uint32_t);
-
+void new_wp(char * args, uint32_t n);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -77,7 +77,7 @@ static int cmd_info(char *args) {
 	return 0;
 } 
 
-static int cmd_exam(char *args)
+static int cmd_exam(char *args)//扫描内存
 	{
 	int i;
 	int j;
@@ -105,6 +105,13 @@ static int cmd_cmpter(char* args)
 	
 	return 0;
 }
+static int cmd_watch(char* args)
+{
+	bool sus;
+	uint32_t n=expr(args, &sus);
+	new_wp(args,n);
+	return 0;
+}
 static int cmd_help(char *args);
 
 static struct {
@@ -118,7 +125,8 @@ static struct {
 	{"si","程序单步执行 N 条指令后暂停,当 N 没有给出时, 缺省为 1。",cmd_si},
 	{"info","print the state of register ",cmd_info},
 	{"x","扫描内存",cmd_exam},
-	{"p","表达式求值",cmd_cmpter}
+	{"p","表达式求值",cmd_cmpter},
+	{"w","watchpoint",cmd_watch}
 	/* TODO: Add more commands */
 
 };
