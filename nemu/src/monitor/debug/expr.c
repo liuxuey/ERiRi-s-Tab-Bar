@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ = '=' , NUMBER = 'i',hex,reg,nottrue,a,yu,huo,muiply
+	NOTYPE = 256, EQ = '=' , NUMBER = 'i',hex,reg,nottrue,a,yu,huo,muiply,gangling=114
 	
 	/* TODO: Add more token types */
 
@@ -37,8 +37,8 @@ static struct rule {
 	{"[0-9]{1,10}", NUMBER},		// number
 	{"\\(",'('},					// zuokuohao
 	{"\\)",')'},					// youkuohao
-	{"==", EQ}						// equal
-	
+	{"==", EQ}	,					// equal
+	{"\0",gangling}					// 杠林
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -99,7 +99,8 @@ static bool make_token(char *e) {
 				// 去除空格串
 				if (rules[i].token_type == NOTYPE)
 					continue;
-
+				if (rules[i].token_type == 114)
+					continue;
 				
 
 				switch(rules[i].token_type) {
