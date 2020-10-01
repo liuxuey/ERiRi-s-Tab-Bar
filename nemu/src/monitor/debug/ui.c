@@ -109,7 +109,7 @@ static int cmd_watch(char* args)
 {
 	bool sus;
 	uint32_t n=expr(args, &sus);
-	printf("1\n");
+	
 	new_wp(args,n);
 	return 0;
 }
