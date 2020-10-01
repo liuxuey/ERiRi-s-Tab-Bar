@@ -69,11 +69,11 @@ void free_wp(char *args)
 	while(wp)
 	{
 		if(!strcmp(args,wp->str)) break;
-		//wp=wp->next;
+		wp=wp->next;
 	}
 	printf("woshishabi\n");
 	WP* head1=head;
-	while(head1->next!=wp)
+	while(head1!=wp)
 	{
 		head1=head1->next;
 	} 		//找到取出位置
