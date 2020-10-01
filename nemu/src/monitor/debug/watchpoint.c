@@ -25,7 +25,7 @@ void init_wp_pool() {
 /* TODO: Implement the functionality of watchpoint */
 
 void new_wp(char * args, uint32_t n)
-{
+{printf("2\n");
 	if(free_==NULL)
 	{
 		assert(0);
