@@ -96,13 +96,9 @@ void free_wp(char *args)
 		head1=head1->next;
 	} 		//找到取出位置
 	head1->next=wp->next;
-	printf("woshishabi\n");
 	WP* wp1=wp->next;
-	printf("woshishabi\n");
 	if(wp1!=NULL) wp1->NO=head1->NO+1; //取出
-	
 	newwp->next=wp;
-	printf("woshishabi\n");
 	wp->next=NULL;
 	wp->NO=newwp->NO+1;
 	wp->flag=0;}

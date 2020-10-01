@@ -95,13 +95,22 @@ void cpu_exec(volatile uint32_t n) {
 			
 			a->newvalue=expr(a->str, &sus);
 			
-			
+			if(strcmp(a->str,"$eip")){
 			if(a->newvalue!=a->value)
 			{
 				printf("your watchpoint %s brokes\n",a->str);
 				nemu_state=STOP;
 				
+			}}
+			else{
+				if(a->newvalue>=a->value)
+			{
+				printf("your watchpoint %s brokes\n",a->str);
+				nemu_state=STOP;
+				
 			}
+			}
+			
 			if(a->next==NULL) break;
 
 			a=a->next;
