@@ -9,6 +9,7 @@
 
 WP *retwppool();
 WP *rethead();
+void free_wp(char *args);
 void cpu_exec(uint32_t);
 void new_wp(char * args, uint32_t n);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
@@ -83,7 +84,7 @@ static int cmd_info(char *args) {
 		for(i=0;i<32;i++)
 		{
 			if(a==NULL) break; 
-			printf("%d  %s  %d  %d\n",a->NO,a->str,a->value,a->flag);
+			printf("%d  %s  %d  %d\n",a->NO,a->str,a->value,a->flag); //打印watchpoint状态
 			
 			if(a->next==NULL) break;
 
@@ -130,6 +131,11 @@ static int cmd_watch(char* args)
 	new_wp(args,n);
 	return 0;
 }
+static int cmd_delete(char* args)
+{
+	free_wp(args);
+	return 0;
+}
 static int cmd_help(char *args);
 
 static struct {
@@ -144,7 +150,8 @@ static struct {
 	{"info","print the state of register ",cmd_info},
 	{"x","扫描内存",cmd_exam},
 	{"p","表达式求值",cmd_cmpter},
-	{"w","watchpoint",cmd_watch}
+	{"w","watchpoint",cmd_watch},
+	{"d","delete the watchpoint",cmd_delete}
 	/* TODO: Add more commands */
 
 };

@@ -61,8 +61,13 @@ void new_wp(char * args, uint32_t n)
 	strcpy(newwp1->str,args);
 	newwp1->value=n;}
 }
-void free_wp(WP *wp)
+void free_wp(char *args)
 {
+	WP *wp=free_;
+	while(wp)
+	{
+		if(wp->str==args) break;
+	}
 	WP* head1=head;
 	while(head1->next!=wp)
 	{
