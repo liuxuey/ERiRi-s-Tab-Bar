@@ -21,7 +21,7 @@ static struct rule {
 	/* TODO: Add more rules.
 	 * Pay attention to the precedence level of different rules.
 	 */
-	{" +",	NOTYPE},
+	{"[ ]{99}",	NOTYPE},
 	{"0x[0-9,a-f]{1,8}",hex},					//十六位
 	{"\\$[a-z]{2,3}",reg},					//寄存器
 	{"!=",nottrue},				//不等于
@@ -38,6 +38,7 @@ static struct rule {
 	{"\\(",'('},					// zuokuohao
 	{"\\)",')'},					// youkuohao
 	{"==", EQ}						// equal
+	
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
