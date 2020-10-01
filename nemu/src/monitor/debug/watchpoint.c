@@ -84,7 +84,7 @@ void free_wp(char *args)
 	printf("woshishabi\n");
 	WP* wp1=wp->next;
 	printf("woshishabi\n");
-	wp1->NO=head1->NO+1; //取出
+	if(wp1!=NULL) wp1->NO=head1->NO+1; //取出
 	
 	newwp->next=wp;
 	printf("woshishabi\n");
