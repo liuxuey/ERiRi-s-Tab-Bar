@@ -87,7 +87,7 @@ void cpu_exec(volatile uint32_t n) {
 		/* TODO: check watchpoints here. */
 		int i;
 		WP *a=rethead();
-		
+		printf("here1\n");
 		for(i=0;i<32;i++)
 		{
 			
