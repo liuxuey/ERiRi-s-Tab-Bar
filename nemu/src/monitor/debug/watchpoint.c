@@ -63,10 +63,12 @@ void new_wp(char * args, uint32_t n)
 }
 void free_wp(char *args)
 {
+	printf("woshishabi\n");
 	WP *wp=free_;
+	printf("woshishabi\n");
 	while(wp)
 	{
-		if(wp->str==args) break;
+		if(!strcmp(args,wp->str)) break;
 	}
 	printf("woshishabi\n");
 	WP* head1=head;
