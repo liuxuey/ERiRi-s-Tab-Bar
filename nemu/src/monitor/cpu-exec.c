@@ -1,5 +1,16 @@
 #include "monitor/monitor.h"
 #include "cpu/helper.h"
+#include "monitor/watchpoint.h"
+#include "monitor/expr.h"
+#include "common.h"
+#include "monitor/monitor.h"
+#include "monitor/expr.h"
+#include "monitor/watchpoint.h"
+#include "nemu.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 #include <setjmp.h>
 
 /* The assembly code of instructions executed is only output to the screen
@@ -10,7 +21,7 @@
 #define MAX_INSTR_TO_PRINT 10
 
 int nemu_state = STOP;
-
+void ui_mainloop();
 int exec(swaddr_t);
 
 char assembly[80];
@@ -73,7 +84,19 @@ void cpu_exec(volatile uint32_t n) {
 #endif
 
 		/* TODO: check watchpoints here. */
-
+		int i;
+		WP *a=retwppool();
+		for(i=0;i<32;i++)
+		{
+			bool sus;
+			a[i].newvalue=expr(a[i].str, &sus);
+			if(a[i].newvalue!=a[i].value)
+			{
+				printf("your watchpoint %s brokes",a[i].str);
+				nemu_state=STOP;
+				ui_mainloop();
+			}
+		}
 
 #ifdef HAS_DEVICE
 		extern void device_update();
