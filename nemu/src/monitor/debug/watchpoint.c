@@ -38,6 +38,7 @@ void new_wp(char * args, uint32_t n)
 	WP* newwp1=newwp->next;
 	newwp->next=NULL;
 	WP* head1=head;
+	printf("2\n");
 	while(head1->next!=NULL)
 	{
 		head1=head1->next;
