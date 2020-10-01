@@ -68,6 +68,7 @@ void free_wp(char *args)
 	{
 		if(wp->str==args) break;
 	}
+	printf("woshishabi\n");
 	WP* head1=head;
 	while(head1->next!=wp)
 	{
