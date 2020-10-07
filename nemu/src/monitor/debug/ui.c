@@ -50,31 +50,31 @@ static int cmd_si(char *args)
 static int cmd_info(char *args) {
 	char *arg = strtok(NULL, " ");
 	if(*arg=='r') 
-	{printf("eax : %x \n",cpu.gpr[0]._32);
-	 printf("ecx : %x \n",cpu.gpr[1]._32);
-	 printf("edx : %x \n",cpu.gpr[2]._32);
-	 printf("ebx : %x \n",cpu.gpr[3]._32);
-	 printf("esp : %x \n",cpu.gpr[4]._32);
-	 printf("ebp : %x \n",cpu.gpr[5]._32);
-	 printf("esi : %x \n",cpu.gpr[6]._32);
-	 printf("edi : %x \n",cpu.gpr[7]._32);
-	 printf("ax : %x \n",cpu.gpr[0]._16);
-	 printf("cx : %x \n",cpu.gpr[1]._16);
-	 printf("dx : %x \n",cpu.gpr[2]._16);
-	 printf("bx : %x \n",cpu.gpr[3]._16);
-	 printf("sp : %x \n",cpu.gpr[4]._16);
-	 printf("bp : %x \n",cpu.gpr[5]._16);
-	 printf("si : %x \n",cpu.gpr[6]._16);
-	 printf("di : %x \n",cpu.gpr[7]._16);
-	 printf("al : %x \n",cpu.gpr[0]._8[0]);
-	 printf("ah : %x \n",cpu.gpr[0]._8[1]);
-	 printf("cl : %x \n",cpu.gpr[1]._8[0]);
-	 printf("ch : %x \n",cpu.gpr[1]._8[1]);
-	 printf("dl : %x \n",cpu.gpr[2]._8[0]);
-	 printf("dh : %x \n",cpu.gpr[2]._8[1]);
-	 printf("bl : %x \n",cpu.gpr[3]._8[0]);
-	 printf("bh : %x \n",cpu.gpr[3]._8[1]);
-	 printf("eip : %x \n",cpu.eip);
+	{printf("eax : 0x%x \n",cpu.gpr[0]._32);
+	 printf("ecx : 0x%x \n",cpu.gpr[1]._32);
+	 printf("edx : 0x%x \n",cpu.gpr[2]._32);
+	 printf("ebx : 0x%x \n",cpu.gpr[3]._32);
+	 printf("esp : 0x%x \n",cpu.gpr[4]._32);
+	 printf("ebp : 0x%x \n",cpu.gpr[5]._32);
+	 printf("esi : 0x%x \n",cpu.gpr[6]._32);
+	 printf("edi : 0x%x \n",cpu.gpr[7]._32);
+	 printf("ax : 0x%x \n",cpu.gpr[0]._16);
+	 printf("cx : 0x%x \n",cpu.gpr[1]._16);
+	 printf("dx : 0x%x \n",cpu.gpr[2]._16);
+	 printf("bx : 0x%x \n",cpu.gpr[3]._16);
+	 printf("sp : 0x%x \n",cpu.gpr[4]._16);
+	 printf("bp : 0x%x \n",cpu.gpr[5]._16);
+	 printf("si : 0x%x \n",cpu.gpr[6]._16);
+	 printf("di : 0x%x \n",cpu.gpr[7]._16);
+	 printf("al : 0x%x \n",cpu.gpr[0]._8[0]);
+	 printf("ah : 0x%x \n",cpu.gpr[0]._8[1]);
+	 printf("cl : 0x%x \n",cpu.gpr[1]._8[0]);
+	 printf("ch : 0x%x \n",cpu.gpr[1]._8[1]);
+	 printf("dl : 0x%x \n",cpu.gpr[2]._8[0]);
+	 printf("dh : 0x%x \n",cpu.gpr[2]._8[1]);
+	 printf("bl : 0x%x \n",cpu.gpr[3]._8[0]);
+	 printf("bh : 0x%x \n",cpu.gpr[3]._8[1]);
+	 printf("eip : 0x%x \n",cpu.eip);
 	 
 	}
 	if(*arg=='w')
