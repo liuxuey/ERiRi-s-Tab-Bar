@@ -174,7 +174,7 @@ static bool make_token(char *e) {
 				{	printf("i find a pointer!\n");
 					tokens[0].type=113;
 					
-					tokens[0].priority1=15;
+					tokens[0].priority1=13;
 				}
 				int case_pointer;
 				for(case_pointer=0;case_pointer<nr_token;case_pointer++)
@@ -190,7 +190,7 @@ static bool make_token(char *e) {
 							printf("i find a pointer!\n");
 							tokens[case_pointer].type=113; 
 
-							tokens[case_pointer].priority1=15;
+							tokens[case_pointer].priority1=13;
 						}}}}
 					}
 				}
@@ -255,12 +255,13 @@ bool check_parentheses(int p,int q){//最后的括号对应
 			}
 			if(flag==0){if(dominantop.type!=112){
 				if(dominantop.type!='m'){
+					if(dominantop.type!=113){
 			if(dominantop.priority1>=tokens[i].priority1)	//比较优先级
 			{
 				
 				dominantop=tokens[i];
 				j=i;						//do op的定位
-			}}}
+			}}}}
 			else {
 				if(dominantop.priority1>tokens[i].priority1)	//比较优先级
 			{
@@ -344,6 +345,12 @@ uint32_t sumbds(p,q)		//表达式求值
 			uint32_t val=sumbds(op+1,q);
 			if(val) return 0;
 			else return 1;
+		}
+		if(tokens[op].type==113)
+		{
+			
+			uint32_t val=sumbds(op+1,q);
+			return swaddr_read (val,4);
 		}
 		else if(tokens[op].type=='m')
 		{
