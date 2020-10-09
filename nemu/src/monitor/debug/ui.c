@@ -100,10 +100,13 @@ static int cmd_exam(char *args)//扫描内存
 	int i;
 	int j;
 	int add;
+	bool sus;
+		
 	char *arg=strtok(args," ");
 	int n=atoi(arg);
 	char *arg1 =strtok(NULL," ");
-	sscanf(arg1,"%x",&add);
+	
+	add=expr(arg1, &sus);
 	for(i=0;i<n;i++)
 	{
 	uint32_t data =swaddr_read(add+i*4,4);
