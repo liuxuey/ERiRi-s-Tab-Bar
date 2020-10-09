@@ -350,7 +350,7 @@ uint32_t sumbds(p,q)		//表达式求值
 		{
 			
 			uint32_t val=sumbds(op+1,q);
-			return swaddr_read (val,4);
+			return swaddr_read (val,2);
 		}
 		else if(tokens[op].type=='m')
 		{
