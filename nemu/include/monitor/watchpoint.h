@@ -10,6 +10,7 @@ typedef struct watchpoint {
 	char str[64];
 	int value;
 	int newvalue;
+	int duan;
 	/* TODO: Add more members if necessary */
 
 
