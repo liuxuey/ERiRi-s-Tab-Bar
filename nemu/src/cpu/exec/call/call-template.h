@@ -4,11 +4,8 @@
 
 static void do_execute() {
     cpu.gpr[4]._32-=4;
-    
+    MEM_W(cpu.esp,cpu.eip);
     swaddr_t addr = instr_fetch(cpu.eip + 1, 1);
-    printf("here1\n");
-    
-    printf("here1\n");
     cpu.eip+=addr;
     printf("%x\n",cpu.eip);
 }
