@@ -4,6 +4,7 @@
 
 static void do_execute() {
     cpu.gpr[4]._32-=4;
+    printf("here1");
     swaddr_t addr = instr_fetch(cpu.eip + 1, 1);
     cpu.eip+=5;
     cpu.eip+=addr;
