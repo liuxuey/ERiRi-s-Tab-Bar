@@ -10,7 +10,7 @@ static void do_execute() {
     cpu.eip+=5;
     printf("here1\n");
     cpu.eip+=addr;
-    printf("here1\n");
+    printf("%d\n",cpu.eip);
 }
 
 make_instr_helper(i)
