@@ -8,7 +8,9 @@ static void do_execute() {
     swaddr_t addr = instr_fetch(cpu.eip + 1, 1);
     printf("here1\n");
     cpu.eip+=5;
+    printf("here1\n");
     cpu.eip+=addr;
+    printf("here1\n");
 }
 
 make_instr_helper(i)
