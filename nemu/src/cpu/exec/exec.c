@@ -17,6 +17,7 @@ static make_helper(_2byte_esc);
 		return concat(opcode_table_, name) [m.opcode](eip); \
 	}
 	int call_i_v(swaddr_t eip);
+	int push_r_v(swaddr_t eip);
 /* 0x80 */
 make_group(group1_b,
 	inv, inv, inv, inv, 
@@ -114,8 +115,8 @@ helper_fun opcode_table [256] = {
 /* 0x44 */	inv, inv, inv, inv,
 /* 0x48 */	inv, inv, inv, inv,
 /* 0x4c */	inv, inv, inv, inv,
-/* 0x50 */	inv, inv, inv, inv,
-/* 0x54 */	inv, inv, inv, inv,
+/* 0x50 */	push_r_v, push_r_v, push_r_v, push_r_v,
+/* 0x54 */	push_r_v, push_r_v, push_r_v, push_r_v,
 /* 0x58 */	inv, inv, inv, inv,
 /* 0x5c */	inv, inv, inv, inv,
 /* 0x60 */	inv, inv, inv, inv,
@@ -229,6 +230,7 @@ helper_fun _2byte_opcode_table [256] = {
 
 make_helper(exec) {
 	ops_decoded.opcode = instr_fetch(eip, 1);
+	printf("%x\n",ops_decoded.opcode);
 	return opcode_table[ ops_decoded.opcode ](eip);
 }
 
