@@ -7,7 +7,7 @@ static void do_execute() {
     MEM_W(cpu.esp,cpu.eip);
     swaddr_t addr = instr_fetch(cpu.eip + 1, 1);
     cpu.eip+=addr;
-    printf("%x\n",cpu.eip);
+    
 }
 
 make_instr_helper(i)
