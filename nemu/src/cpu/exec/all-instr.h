@@ -5,6 +5,7 @@
 #include "push/push.h"
 #include "test/test.h"
 #include "je/je.h"
+#include "cmp/cmp.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
