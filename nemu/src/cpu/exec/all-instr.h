@@ -6,6 +6,7 @@
 #include "test/test.h"
 #include "je/je.h"
 #include "cmp/cmp.h"
+#include "ret/ret.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
