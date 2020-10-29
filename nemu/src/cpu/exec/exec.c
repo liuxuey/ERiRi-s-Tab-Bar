@@ -16,8 +16,6 @@ static make_helper(_2byte_esc);
 		m.val = instr_fetch(eip + 1, 1); \
 		return concat(opcode_table_, name) [m.opcode](eip); \
 	}
-	int call_i_v(swaddr_t eip);
-	int push_r_v(swaddr_t eip);
 /* 0x80 */
 make_group(group1_b,
 	inv, inv, inv, inv, 
@@ -230,7 +228,6 @@ helper_fun _2byte_opcode_table [256] = {
 
 make_helper(exec) {
 	ops_decoded.opcode = instr_fetch(eip, 1);
-	
 	return opcode_table[ ops_decoded.opcode ](eip);
 }
 
