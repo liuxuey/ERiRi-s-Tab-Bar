@@ -7,6 +7,7 @@
 #include "je/je.h"
 #include "cmp/cmp.h"
 #include "ret/ret.h"
+#include "pop/pop.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
