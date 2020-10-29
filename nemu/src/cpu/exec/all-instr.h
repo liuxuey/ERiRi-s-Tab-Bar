@@ -3,6 +3,7 @@
 #include "data-mov/mov.h"
 #include "call/call.h"
 #include "push/push.h"
+#include "test/test.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
