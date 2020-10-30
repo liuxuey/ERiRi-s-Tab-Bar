@@ -16,6 +16,7 @@
 #include "setne/setne.h"
 #include "add/add.h"
 #include "adc/adc.h"
+#include "jne/jne.h"
 #include "movzb/movzx.h"
 #include "data-mov/xchg.h"
 
