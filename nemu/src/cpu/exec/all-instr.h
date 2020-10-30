@@ -8,6 +8,7 @@
 #include "cmp/cmp.h"
 #include "ret/ret.h"
 #include "pop/pop.h"
+#include "sub/sub.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
