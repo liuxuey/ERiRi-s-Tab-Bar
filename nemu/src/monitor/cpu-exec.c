@@ -39,6 +39,7 @@ static inline void push (int val)
 }
 void raise_intr(uint8_t NO) {
     /* Jump back to cpu_exec() */
+	printf("1\n");
     	longjmp(jbuf, 1);
 }
 
