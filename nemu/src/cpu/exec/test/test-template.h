@@ -14,6 +14,7 @@ static void do_execute() {
 	result ^= result >>2;
 	result ^= result >>1;
 	cpu.PF=!(result & 1);		//设置PF
+	printf("%d\n",cpu.eax);
 }
 make_instr_helper(i2a)
 make_instr_helper(i2rm)
