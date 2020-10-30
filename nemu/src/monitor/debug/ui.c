@@ -75,7 +75,7 @@ static int cmd_info(char *args) {
 	 printf("bl : 0x%x \n",cpu.gpr[3]._8[0]);
 	 printf("bh : 0x%x \n",cpu.gpr[3]._8[1]);
 	 printf("eip : 0x%x \n",cpu.eip);
-	 
+	 printf("ZF : %d \n",cpu.ZF);
 	}
 	if(*arg=='w')
 	{
