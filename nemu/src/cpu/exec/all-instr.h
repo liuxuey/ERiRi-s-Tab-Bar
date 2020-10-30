@@ -14,6 +14,7 @@
 #include "sete/sete.h"
 #include "stos/stos.h"
 #include "lea/lea.h"
+#include "sbb/sbb.h"
 #include "movsx/movsx.h"
 #include "jg/jg.h"
 #include "jl/jl.h"
