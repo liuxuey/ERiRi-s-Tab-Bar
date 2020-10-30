@@ -8,14 +8,14 @@ static void do_execute () {
 		swaddr_write (op_src->addr, 4 ,MEM_R(cpu.esp));
 		MEM_W(cpu.esp , 0);
 		cpu.esp += 4;
-		printf("%d\n",cpu.eax);
+		
 	}
 	else
 	{
 		OPERAND_W (op_src, MEM_R(cpu.esp));
 		MEM_W(cpu.esp , 0);
 		cpu.esp += DATA_BYTE;
-		printf("%d\n",cpu.eax);
+		// printf("%d\n",cpu.eax);
 	}
 }
 

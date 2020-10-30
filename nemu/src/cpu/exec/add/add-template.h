@@ -17,6 +17,7 @@ static void do_execute() {
 	result ^= result >>2;
 	result ^= result >>1;
 	cpu.PF=!(result & 1);
+	printf("%d\n",cpu.eax);
 	print_asm_template2();
 }
 #if DATA_BYTE == 2 || DATA_BYTE == 4
