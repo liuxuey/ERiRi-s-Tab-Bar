@@ -5,7 +5,7 @@ make_helper(intr) {
 	int NO = instr_fetch(eip + 1, 1);
 	cpu.eip += 2;
 	print_asm("int %x",NO);
-    printf("1\n");
 	raise_intr (NO);
+    printf("1\n");
 	return 0;
 }
