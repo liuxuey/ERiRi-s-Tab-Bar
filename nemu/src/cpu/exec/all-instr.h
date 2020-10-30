@@ -11,6 +11,7 @@
 #include "sub/sub.h"
 #include "jmp/jmp.h"
 #include "jbe/jbe.h"
+#include "sete/sete.h"
 #include "lea/lea.h"
 #include "jg/jg.h"
 #include "jl/jl.h"
