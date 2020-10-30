@@ -40,7 +40,7 @@ static inline void push (int val)
 void raise_intr(uint8_t NO) {
 	/* TODO: Trigger an interrupt/exception with ``NO''.
 	 * That is, use ``NO'' to index the IDT.
-	 */
+	 */printf("1\n");
     	Assert(NO * 8 <= cpu.idtr.seg_limit, "Interrupt number exceeded");
 		printf("1\n");
     	GATE_descriptor gate;
