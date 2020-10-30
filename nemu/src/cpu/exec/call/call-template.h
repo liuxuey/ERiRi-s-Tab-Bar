@@ -11,6 +11,7 @@ make_helper (concat(call_i_, SUFFIX))
 	print_asm("call %x",cpu.eip + 1 + len + displacement);
 	cpu.eip +=displacement;
 	return len + 1;
+	print_asm_template1();
 }
 make_helper (concat(call_rm_, SUFFIX))
 {
