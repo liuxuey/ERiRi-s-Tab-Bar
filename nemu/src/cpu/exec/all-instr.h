@@ -15,6 +15,7 @@
 #include "leave/leave.h"
 #include "setne/setne.h"
 #include "add/add.h"
+#include "adc/adc.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
