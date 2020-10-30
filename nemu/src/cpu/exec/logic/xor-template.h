@@ -7,7 +7,7 @@ static void do_execute () {
 	OPERAND_W(op_dest, result);
 	cpu.CF = cpu.OF = 0;
 	concat(updateCPU_, SUFFIX) (result);
-
+	printf("%d\n",cpu.eax);
 	print_asm_template2();
 }
 

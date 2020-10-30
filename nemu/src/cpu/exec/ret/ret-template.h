@@ -8,7 +8,7 @@ make_helper(concat(ret_n_, SUFFIX))
 	//if (DATA_BYTE == 2)cpu.eip &= 0xffff;
 	cpu.esp += DATA_BYTE;
 	print_asm("ret");
-	
+	// printf("%d\n",cpu.eax);
 	return 1;
 }
 
@@ -23,7 +23,6 @@ make_helper(concat(ret_i_, SUFFIX))
 	MEM_W (cpu.esp + i,0);
 	cpu.esp += val;
 	print_asm("ret $0x%x",val);
-	printf("%d\n",cpu.eax);
 	return 1;
 }
 
