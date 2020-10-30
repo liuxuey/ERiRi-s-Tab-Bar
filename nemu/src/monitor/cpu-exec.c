@@ -41,12 +41,14 @@ void raise_intr(uint8_t NO) {
 	/* TODO: Trigger an interrupt/exception with ``NO''.
 	 * That is, use ``NO'' to index the IDT.
 	 */
+    	Assert(NO * 8 <= cpu.idtr.seg_limit, "Interrupt number exceeded");
+		printf("1\n");
     	GATE_descriptor gate;
 	idt_des = &gate;
    	lnaddr_t pidt = cpu.idtr.base_addr + NO * 8;
    	idt_des->first_part = lnaddr_read(pidt, 4);
 	idt_des->second_part = lnaddr_read(pidt + 4, 4);
-	
+	Assert ((NO << 3) <= cpu.idtr.seg_limit,"idt out limit %hd, %d", (NO<<3), cpu.idtr.seg_limit);
 	push (cpu.eflags);
 	if (cpu.cr0.protect_enable == 0)
 	{
@@ -56,7 +58,7 @@ void raise_intr(uint8_t NO) {
 	push (cpu.cs.selector);
 	push (cpu.eip); 
     	cpu.cs.selector = idt_des -> segment;
-    	
+    	Assert(((cpu.cs.selector>>3)<<3) <= cpu.gdtr.seg_limit, "segment out limit %d, %d", ((cpu.cs.selector>>3)<<3), cpu.gdtr.seg_limit);
 	current_sreg = R_CS;
     	sreg_load();
     	cpu.eip = cpu.cs.seg_base + idt_des -> offset_15_0 + (idt_des -> offset_31_16 << 16);
