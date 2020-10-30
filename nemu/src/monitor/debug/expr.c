@@ -393,6 +393,7 @@ uint32_t sumbds(p,q)		//表达式求值
 			
 		}
 	}
+	return 0;
 }
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {

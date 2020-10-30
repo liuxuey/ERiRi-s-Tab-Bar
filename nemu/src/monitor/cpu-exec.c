@@ -37,11 +37,7 @@ static inline void push (int val)
 	reg_l (R_ESP) -= 4;
 	swaddr_write (reg_l (R_ESP) , 4 , val);
 }
-void raise_intr(uint8_t NO) {
-    /* Jump back to cpu_exec() */
-	printf("1\n");
-    	longjmp(jbuf, 1);
-}
+
 
 void print_bin_instr(swaddr_t eip, int len) {
 	int i;
