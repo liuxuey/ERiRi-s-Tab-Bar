@@ -9,6 +9,7 @@
 #include "ret/ret.h"
 #include "pop/pop.h"
 #include "sub/sub.h"
+#include "jmp/jmp.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
