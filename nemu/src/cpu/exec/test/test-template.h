@@ -9,7 +9,8 @@ static void do_execute() {
 	cpu.CF=0;		
 	cpu.OF=0;		//CF和OF标志位设置成0
 	cpu.SF=result >> len;	//SF为标志位
-    	cpu.ZF=!result;			//ZF为是否为0
+    	cpu.ZF=!result;	
+		printf("%d\n",cpu.ZF);		//ZF为是否为0
     	result ^= result >>4;
 	result ^= result >>2;
 	result ^= result >>1;
