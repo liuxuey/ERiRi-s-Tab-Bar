@@ -12,6 +12,5 @@
 #include "je-template.h"
 #undef DATA_BYTE
 
-/* for instruction encoding overloading */
 
 make_helper_v(je_i)

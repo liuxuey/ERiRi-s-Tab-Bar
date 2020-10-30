@@ -3,20 +3,20 @@
 #define instr sub
 
 static void do_execute() {
-	DATA_TYPE result = op_dest->val - op_src->val;
-	int len = (DATA_BYTE << 3) - 1;
-	cpu.CF = op_dest->val < op_src->val;
-	cpu.SF=result >> len;
+	DATA_TYPE result = op_dest->val - op_src->val;  //计算sub的值
+	int len = (DATA_BYTE << 3) - 1;  //计算长度
+	cpu.CF = op_dest->val < op_src->val;   //判断CF进位符
+	cpu.SF=result >> len; //判断符号位
     	int s1,s2;
-	s1=op_dest->val>>len;
+	s1=op_dest->val>>len;   
 	s2=op_src->val>>len;
-    	cpu.OF=(s1 != s2 && s2 == cpu.SF) ;
-    	cpu.ZF=!result;
-    	OPERAND_W(op_dest, result);
+    	cpu.OF=(s1 != s2 && s2 == cpu.SF);
+    	cpu.ZF=!result;                 //判断ZF
+    	OPERAND_W(op_dest, result); //将result写进op_dest里面
 	result ^= result >>4;
 	result ^= result >>2;
 	result ^= result >>1;
-	cpu.PF=!(result & 1);
+	cpu.PF=!(result & 1);       //计算PF，1的个数
 	print_asm_template2();
 }
 #if DATA_BYTE == 2 || DATA_BYTE == 4
