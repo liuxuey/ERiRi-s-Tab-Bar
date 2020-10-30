@@ -46,7 +46,7 @@ void raise_intr(uint8_t NO) {
    	lnaddr_t pidt = cpu.idtr.base_addr + NO * 8;
    	idt_des->first_part = lnaddr_read(pidt, 4);
 	idt_des->second_part = lnaddr_read(pidt + 4, 4);
-	Assert ((NO << 3) <= cpu.idtr.seg_limit,"idt out limit %hd, %d", (NO<<3), cpu.idtr.seg_limit);
+	
 	push (cpu.eflags);
 	if (cpu.cr0.protect_enable == 0)
 	{
