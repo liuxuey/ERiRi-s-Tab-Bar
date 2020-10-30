@@ -16,6 +16,7 @@
 #include "lea/lea.h"
 #include "sbb/sbb.h"
 #include "js/js.h"
+#include "ja/ja.h"
 #include "jns/jns.h"
 #include "jge/jge.h"
 #include "movsx/movsx.h"
