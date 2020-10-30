@@ -38,29 +38,6 @@ static inline void push (int val)
 	swaddr_write (reg_l (R_ESP) , 4 , val);
 }
 void raise_intr(uint8_t NO) {
-	/* TODO: Trigger an interrupt/exception with ``NO''.
-	 * That is, use ``NO'' to index the IDT.
-	 */
-    	if(NO * 8 <= cpu.idtr.seg_limit) printf( "Interrupt number exceeded");
-    	GATE_descriptor gate;
-	idt_des = &gate;
-   	lnaddr_t pidt = cpu.idtr.base_addr + NO * 8;
-   	idt_des->first_part = lnaddr_read(pidt, 4);
-	idt_des->second_part = lnaddr_read(pidt + 4, 4);
-	if((NO << 3) <= cpu.idtr.seg_limit) printf("idt out limit %hd, %d", (NO<<3), cpu.idtr.seg_limit);
-	push (cpu.eflags);
-	if (cpu.cr0.protect_enable == 0)
-	{
-		cpu.IF = 0;
-		cpu.TF = 0;
-	}
-	push (cpu.cs.selector);
-	push (cpu.eip); 
-    	cpu.cs.selector = idt_des -> segment;
-    	if(((cpu.cs.selector>>3)<<3) <= cpu.gdtr.seg_limit) printf("segment out limit %d, %d", ((cpu.cs.selector>>3)<<3), cpu.gdtr.seg_limit);
-	current_sreg = R_CS;
-    	sreg_load();
-    	cpu.eip = cpu.cs.seg_base + idt_des -> offset_15_0 + (idt_des -> offset_31_16 << 16);
     /* Jump back to cpu_exec() */
     	longjmp(jbuf, 1);
 }
