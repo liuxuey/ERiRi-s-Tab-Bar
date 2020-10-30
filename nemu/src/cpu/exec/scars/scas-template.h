@@ -8,6 +8,7 @@ make_helper(concat(scas_, SUFFIX)) {
 	if (cpu.DF == 0) reg_l(R_EDI) += DATA_BYTE;
 	else reg_l(R_EDI) -= DATA_BYTE;
 	concat(updateCPU_, SUFFIX) (res);
+    printf("1\n");
 	int len = (DATA_BYTE << 3) - 1;
 	cpu.CF = s1 < s2;
     cpu.OF = ((s1 >> len) != (s2 >> len) && (s2 >> len) == cpu.SF);
