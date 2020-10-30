@@ -13,6 +13,7 @@
 #include "jbe/jbe.h"
 #include "lea/lea.h"
 #include "leave/leave.h"
+#include "setne/setne.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
