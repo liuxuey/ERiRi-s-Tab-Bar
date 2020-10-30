@@ -15,6 +15,7 @@
 #include "leave/leave.h"
 #include "setne/setne.h"
 #include "add/add.h"
+#include "jle/jle.h"
 #include "adc/adc.h"
 #include "jne/jne.h"
 #include "movzb/movzx.h"
