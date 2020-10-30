@@ -12,6 +12,7 @@
 #include "jmp/jmp.h"
 #include "jbe/jbe.h"
 #include "lea/lea.h"
+#include "leave/leave.h"
 #include "data-mov/xchg.h"
 
 #include "arith/dec.h"
