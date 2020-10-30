@@ -15,6 +15,7 @@
 #include "stos/stos.h"
 #include "lea/lea.h"
 #include "sbb/sbb.h"
+#include "movs/movs.h"
 #include "scars/scas.h"
 #include "js/js.h"
 #include "ja/ja.h"
